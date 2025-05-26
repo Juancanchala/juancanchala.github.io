@@ -13,17 +13,34 @@
       padding: 0;
     }
     header {
-      background-color: #003366;
+      background-color: #004b4b;
       color: #fff;
-      padding: 20px;
+      padding: 30px 20px;
       text-align: center;
+    }
+    header h1 {
+      margin-bottom: 10px;
+    }
+    nav {
+      background-color: #00796b;
+      text-align: center;
+      padding: 10px 0;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
     }
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 30px 20px;
     }
-    .project {
+    section {
+      margin-bottom: 40px;
+    }
+    .project, .card {
       background: #fff;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -36,21 +53,21 @@
       object-fit: contain;
       border-radius: 4px;
     }
-    .project h2 {
+    .project h2, .card h3 {
       margin-top: 10px;
     }
-    .project a {
+    .project a, .card a {
       display: inline-block;
       margin-top: 10px;
-      color: #003366;
+      color: #004b4b;
       text-decoration: none;
       font-weight: bold;
     }
     footer {
-      background-color: #003366;
+      background-color: #004b4b;
       color: #fff;
       text-align: center;
-      padding: 10px;
+      padding: 15px;
       margin-top: 40px;
     }
   </style>
@@ -61,26 +78,77 @@
     <p>Ingeniero Industrial · Especialista en Supply Chain · Data Analyst</p>
   </header>
 
+  <nav>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#branding">Branding</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
   <div class="container">
 
-    <div class="project">
-      <h2>Dashboard de Gestión de Ventas</h2>
-      <img src="https://raw.githubusercontent.com/Juancanchala/dashboard-gestion-ventas-powerbi/main/dashboard.png" alt="Dashboard de Ventas">
-      <p>Dashboard interactivo en Power BI para el análisis de ventas por producto, canal, ciudad y rentabilidad. Datos ficticios, proyecto demostrativo.</p>
-      <a href="https://github.com/Juancanchala/dashboard-gestion-ventas-powerbi" target="_blank">Ver en GitHub</a>
-    </div>
+    <section id="sobre-mi">
+      <div class="card">
+        <h3>Sobre mí</h3>
+        <p>Ingeniero Industrial con enfoque en análisis de datos y automatización. Especialista en Supply Chain y fundador de D'LOGIA. Descarga mi CV aquí:</p>
+        <a href="#" target="_blank">📄 Descargar Hoja de Vida</a>
+      </div>
+    </section>
 
-    <div class="project">
-      <h2>Dashboard de Utilidad y Márgenes</h2>
-      <img src="https://raw.githubusercontent.com/Juancanchala/tablero-utilidad-margenes-powerbi/main/dashboard.png" alt="Dashboard de Márgenes">
-      <p>Análisis financiero para márgenes, utilidad y eficiencia comercial. Datos anonimizados de un caso real. Visualizado con Power BI.</p>
-      <a href="https://github.com/Juancanchala/tablero-utilidad-margenes-powerbi" target="_blank">Ver en GitHub</a>
-    </div>
+    <section id="proyectos">
+      <h2>Proyectos</h2>
+
+      <div class="project">
+        <h3>Dashboard de Gestión de Ventas</h3>
+        <img src="https://raw.githubusercontent.com/Juancanchala/dashboard-gestion-ventas-powerbi/main/dashboard.png" alt="Dashboard de Ventas">
+        <p>Dashboard en Power BI para análisis de ventas por producto, canal y rentabilidad.</p>
+        <a href="https://github.com/Juancanchala/dashboard-gestion-ventas-powerbi" target="_blank">Ver en GitHub</a>
+      </div>
+
+      <div class="project">
+        <h3>Dashboard de Utilidad y Márgenes</h3>
+        <img src="https://raw.githubusercontent.com/Juancanchala/tablero-utilidad-margenes-powerbi/main/dashboard.png" alt="Dashboard de Márgenes">
+        <p>Análisis financiero para márgenes y utilidad, con datos ficticios anonimizados.</p>
+        <a href="https://github.com/Juancanchala/tablero-utilidad-margenes-powerbi" target="_blank">Ver en GitHub</a>
+      </div>
+
+    </section>
+
+    <section id="servicios">
+      <div class="card">
+        <h3>Servicios de D’LOGIA</h3>
+        <p>Ofrezco soluciones empresariales en:</p>
+        <ul>
+          <li>📊 Dashboards personalizados (Power BI, Looker, Excel)</li>
+          <li>🤖 Automatización con chatbots y Apps Script</li>
+          <li>📦 Optimización logística y análisis de datos operativos</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="branding">
+      <div class="card">
+        <h3>Branding y Recursos</h3>
+        <p>Logo, identidad visual y materiales comerciales de D’LOGIA.</p>
+        <a href="#">🎨 Ver branding</a>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="card">
+        <h3>Contacto</h3>
+        <p>¿Te interesa trabajar conmigo o necesitas una solución personalizada?</p>
+        <p>📧 <a href="mailto:juancanchala@gmail.com">juancanchala@gmail.com</a></p>
+        <p>🔗 <a href="https://www.linkedin.com/in/juancamilocanchala" target="_blank">LinkedIn</a></p>
+      </div>
+    </section>
 
   </div>
 
   <footer>
-    <p>© 2025 Juan Camilo Canchala | D'LOGIA - Soluciones basadas en datos</p>
+    <p>© 2025 Juan Camilo Canchala | D'LOGIA - Soluciones empresariales basadas en datos</p>
   </footer>
 </body>
 </html>
+

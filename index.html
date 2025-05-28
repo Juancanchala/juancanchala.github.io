@@ -3,160 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portafolio Juan Camilo | D'LOGIA</title>
+  <title>D'LOGIA | Portafolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #004b4b;
-      color: #fff;
-      padding: 30px 20px;
-      text-align: center;
-    }
-    header h1 {
-      margin-bottom: 10px;
-    }
-    nav {
-      background-color: #00796b;
-      text-align: center;
-      padding: 10px 0;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 30px 20px;
-    }
-    section {
-      margin-bottom: 40px;
-    }
-    .project, .card {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
-      padding: 20px;
-    }
-    .project img {
+    #particles-js {
+      position: absolute;
       width: 100%;
-      max-height: 300px;
-      object-fit: contain;
-      border-radius: 4px;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
     }
-    .project h2, .card h3 {
-      margin-top: 10px;
+    .fade-in {
+      animation: fadeIn 1.2s ease-in-out;
     }
-    .project a, .card a, .contact-buttons a {
-      display: inline-block;
-      margin-top: 10px;
-      margin-right: 10px;
-      padding: 10px 15px;
-      background-color: #00796b;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-    }
-    .contact-buttons {
-      text-align: center;
-      margin-top: 30px;
-    }
-    footer {
-      background-color: #004b4b;
-      color: #fff;
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
-<body>
-  <header>
-    <h1>Juan Camilo Canchala | D'LOGIA</h1>
-    <p>Ingeniero Industrial · Especialista en Supply Chain · Data Analyst</p>
-  </header>
+<body class="bg-white text-gray-800 font-sans relative overflow-x-hidden">
 
-  <nav>
-    <a href="#sobre-mi">Sobre mí</a>
-    <a href="#proyectos">Proyectos</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-
-  <div class="container">
-
-    <section id="sobre-mi">
-      <div class="card">
-        <h3>Sobre mí</h3>
-        <p>Soy Juan Camilo Canchala, Ingeniero Industrial con más de 8 años de experiencia liderando operaciones logísticas y procesos de mejora continua en distintas industrias. Me especializo en análisis de datos, automatización y visualización de información para la toma de decisiones estratégicas. Actualmente impulso mi firma D’LOGIA, desde donde creo soluciones prácticas y funcionales para empresas que buscan optimizar sus operaciones y transformar sus procesos con ayuda de la tecnología. Estoy en formación como Ingeniero de Datos y he desarrollado múltiples proyectos en Power BI, Flask, Apps Script y automatizaciones empresariales. Descarga mi CV aquí:</p>
-        <a href="CV%20Juan%20Camilo%20Canchala%20Ingeniero%20Industrial%20BI.pdf" target="_blank">📄 Descargar Hoja de Vida</a>
+  <!-- Hero reducido -->
+  <section class="relative text-center py-20 flex flex-col justify-center items-center fade-in">
+    <div id="particles-js"></div>
+    <div class="absolute top-6 left-8 z-10 text-left">
+      <h1 class="text-xl font-semibold text-gray-800">Juan Camilo Canchala</h1>
+      <p class="text-sm text-gray-600">DataOps & Business Intelligence</p>
+    </div>
+    <div class="z-10">
+      <img src="img/logo.png" alt="Logo D'LOGIA" class="mx-auto w-40 mb-4">
+      <div class="flex justify-center gap-4 mt-6">
+        <a href="https://wa.me/57300XXXXXXX" target="_blank">
+          <img src="img/whatsapp.png" alt="WhatsApp" class="w-8 h-8">
+        </a>
+        <a href="https://github.com/Juancanchala" target="_blank">
+          <img src="img/github.png" alt="GitHub" class="w-8 h-8">
+        </a>
+        <a href="https://linkedin.com/in/Juancanchala" target="_blank">
+          <img src="img/linkedin.png" alt="LinkedIn" class="w-8 h-8">
+        </a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="proyectos">
-      <h2>Proyectos destacados</h2>
+  <!-- Bienvenida -->
+  <section class="text-center py-16 bg-gray-100">
+    <h2 class="text-3xl font-bold mb-4">Bienvenido a mi portafolio</h2>
+    <p class="text-lg max-w-xl mx-auto">Aquí encontrarás mis proyectos destacados, servicios profesionales y formas de contacto para transformar los datos en decisiones inteligentes.</p>
+  </section>
 
-      <div class="project">
-        <h3>🤖 Asistente Virtual DILO – MVP</h3>
-        <img src="https://raw.githubusercontent.com/Juancanchala/asistente-dilo-mvp/main/demo2.png" alt="Asistente Virtual DILO">
-        <p>Asistente virtual empresarial creado con Flask, OpenAI y WhatsApp. Ideal para empresas que desean automatizar procesos de atención con una experiencia cálida y profesional.</p>
-        <a href="https://github.com/Juancanchala/asistente-dilo-mvp" target="_blank">Ver en GitHub</a>
+  <!-- Proyectos -->
+  <section id="proyectos" class="p-10 bg-white">
+    <h3 class="text-2xl font-bold mb-6">🚀 Proyectos Destacados</h3>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-gray-50 p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-2xl transition">
+        <h4 class="text-xl font-semibold">Asistente Virtual DILO</h4>
+        <p class="text-sm mt-2 mb-4">Desarrollado con Flask, OpenAI y WhatsApp API. Automatiza procesos de atención y ventas.</p>
+        <a href="#" class="text-blue-600 underline">Ver Demo</a> |
+        <a href="https://github.com/Juancanchala/asistente-virtual-dilo-mvp" class="text-blue-600 underline">Ver en GitHub</a>
       </div>
-
-      <div class="project">
-        <h3>Dashboard de Gestión de Ventas</h3>
-        <img src="https://raw.githubusercontent.com/Juancanchala/dashboard-gestion-ventas-powerbi/main/dashboard.png" alt="Dashboard de Ventas">
-        <p>Dashboard en Power BI para análisis de ventas por producto, canal y rentabilidad.</p>
-        <a href="https://github.com/Juancanchala/dashboard-gestion-ventas-powerbi" target="_blank">Ver en GitHub</a>
+      <div class="bg-gray-50 p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-2xl transition">
+        <h4 class="text-xl font-semibold">Dashboard de Ventas</h4>
+        <p class="text-sm mt-2 mb-4">Power BI con análisis de ventas por producto, canal y margen.</p>
+        <a href="https://github.com/Juancanchala/dashboard-gestion-ventas-powerbi" class="text-blue-600 underline">Ver proyecto</a>
       </div>
+    </div>
+  </section>
 
-      <div class="project">
-        <h3>Dashboard de Utilidad y Márgenes</h3>
-        <img src="https://raw.githubusercontent.com/Juancanchala/tablero-utilidad-margenes-powerbi/main/dashboard.png" alt="Dashboard de Márgenes">
-        <p>Análisis financiero para márgenes y utilidad, con datos ficticios anonimizados.</p>
-        <a href="https://github.com/Juancanchala/tablero-utilidad-margenes-powerbi" target="_blank">Ver en GitHub</a>
-      </div>
-    </section>
+  <!-- Servicios -->
+  <section id="servicios" class="p-10 bg-yellow-50">
+    <h3 class="text-2xl font-bold mb-6">📈 Servicios de D'LOGIA</h3>
+    <ul class="list-disc ml-6">
+      <li>Automatización de procesos empresariales</li>
+      <li>Dashboards profesionales en Power BI / Excel</li>
+      <li>Desarrollo de asistentes virtuales y bots</li>
+      <li>Portafolios web y páginas personalizadas</li>
+    </ul>
+  </section>
 
-    <section id="servicios">
-      <div class="card">
-        <h3>Servicios de D’LOGIA</h3>
-        <p>Ofrezco soluciones empresariales en:</p>
-        <ul>
-          <li>📊 Dashboards personalizados (Power BI, Looker, Excel)</li>
-          <li>🤖 Automatización con chatbots y Apps Script</li>
-          <li>📦 Optimización logística y análisis de datos operativos</li>
-        </ul>
-      </div>
-    </section>
+  <!-- Contacto -->
+  <section id="contacto" class="p-10 bg-white">
+    <h3 class="text-2xl font-bold mb-6">📞 Contáctame</h3>
+    <p class="mb-4">¿Te interesa una solución personalizada? Escríbeme directamente:</p>
+    <div class="flex flex-wrap gap-4">
+      <a href="https://wa.me/57300XXXXXXX" class="flex items-center gap-2 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">
+        <img src="img/whatsapp.png" alt="WhatsApp" class="w-5 h-5"> WhatsApp
+      </a>
+      <a href="https://github.com/Juancanchala" class="flex items-center gap-2 bg-gray-800 text-white px-6 py-2 rounded-lg hover:bg-gray-900">
+        <img src="img/github.png" alt="GitHub" class="w-5 h-5"> GitHub
+      </a>
+      <a href="https://linkedin.com/in/Juancanchala" class="flex items-center gap-2 bg-blue-700 text-white px-6 py-2 rounded-lg hover:bg-blue-800">
+        <img src="img/linkedin.png" alt="LinkedIn" class="w-5 h-5"> LinkedIn
+      </a>
+    </div>
+  </section>
 
-    <section id="contacto">
-      <div class="card">
-        <h3>Contacto</h3>
-        <p>¿Te interesa trabajar conmigo o necesitas una solución personalizada?</p>
-        <div class="contact-buttons">
-          <a href="https://wa.me/573124942672" target="_blank">💬 WhatsApp</a>
-          <a href="https://github.com/Juancanchala" target="_blank">🐱 GitHub</a>
-          <a href="https://www.linkedin.com/in/ingjuancanchala" target="_blank">🔗 LinkedIn</a>
-        </div>
-      </div>
-    </section>
-
-  </div>
-
-  <footer>
-    <p>© 2025 Juan Camilo Canchala | D'LOGIA - Soluciones empresariales basadas en datos</p>
+  <!-- Footer -->
+  <footer class="text-center p-4 text-sm bg-gray-100 text-gray-500">
+    © 2025 D'LOGIA – Todos los derechos reservados
   </footer>
+
+  <!-- Partículas -->
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 60, density: { enable: true, value_area: 800 } },
+        color: { value: "#999999" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#cccccc", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 2 }
+      },
+      interactivity: {
+        events: { onhover: { enable: true, mode: "repulse" } },
+        modes: { repulse: { distance: 100 } }
+      },
+      retina_detect: true
+    });
+  </script>
+
 </body>
 </html>
+
 

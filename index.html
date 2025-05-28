@@ -6,6 +6,7 @@
   <title>D'LOGIA | Portafolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <link rel="icon" href="imagenes/logo-dlogia-blanco.png" type="image/png">
   <style>
     #particles-js {
       position: absolute;
@@ -24,10 +25,18 @@
     }
   </style>
 </head>
-<body class="bg-white text-gray-800 font-sans relative overflow-x-hidden">
+<body class="bg-white text-gray-800 font-sans overflow-x-hidden">
 
-  <!-- Hero reducido -->
-  <section class="relative text-center py-20 flex flex-col justify-center items-center fade-in">
+  <!-- Navbar -->
+  <nav class="w-full py-4 px-8 bg-white shadow-md fixed top-0 z-50 flex justify-center gap-8 font-medium">
+    <a href="#sobre-mi" class="hover:text-yellow-600">Acerca de mí</a>
+    <a href="#proyectos" class="hover:text-yellow-600">Proyectos</a>
+    <a href="#servicios" class="hover:text-yellow-600">Servicios</a>
+    <a href="#contacto" class="hover:text-yellow-600">Contacto</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="relative text-center pt-32 pb-20 fade-in">
     <div id="particles-js"></div>
     <div class="absolute top-6 left-8 z-10 text-left">
       <h1 class="text-xl font-semibold text-gray-800">Juan Camilo Canchala</h1>
@@ -55,6 +64,12 @@
     <p class="text-lg max-w-xl mx-auto">Aquí encontrarás mis proyectos destacados, servicios profesionales y formas de contacto para transformar los datos en decisiones inteligentes.</p>
   </section>
 
+  <!-- Sobre mí -->
+  <section id="sobre-mi" class="text-center py-16 bg-white">
+    <h2 class="text-3xl font-bold mb-4">👨‍💼 Sobre mí</h2>
+    <p class="text-lg max-w-3xl mx-auto">Soy Ingeniero Industrial con especialización en Supply Chain Management, enfocado en soluciones de <strong>Business Intelligence</strong> y <strong>DataOps</strong>. Combino experiencia operativa real con capacidades de análisis y automatización para transformar procesos empresariales.</p>
+  </section>
+
   <!-- Proyectos -->
   <section id="proyectos" class="p-10 bg-white">
     <h3 class="text-2xl font-bold mb-6">🚀 Proyectos Destacados</h3>
@@ -62,25 +77,25 @@
       <div class="bg-gray-50 p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-2xl transition">
         <img src="imagenes/asistente-dilo-demo.png" alt="Asistente Virtual DILO" class="rounded mb-4">
         <h4 class="text-xl font-semibold">Asistente Virtual DILO</h4>
-        <p class="text-sm mt-2 mb-4">Desarrollado con Flask, OpenAI y WhatsApp API. Automatiza procesos de atención y ventas.</p>
+        <p class="text-sm mt-2 mb-4">Desarrollado con Flask, OpenAI y WhatsApp API. Automatiza procesos con calidez profesional.</p>
         <div class="flex gap-3">
-          <a href="https://wa.me/573124942672" target="_blank" class="text-white bg-green-600 px-4 py-1 rounded hover:bg-green-700">Probar</a>
-          <a href="https://github.com/Juancanchala/asistente-virtual-dilo-mvp" target="_blank" class="text-blue-600 underline">Ver GitHub</a>
+          <a href="https://wa.me/573124942672" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Probar</a>
+          <a href="https://github.com/Juancanchala/asistente-virtual-dilo-mvp" target="_blank" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-900">Ver GitHub</a>
         </div>
       </div>
       <div class="bg-gray-50 p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-2xl transition">
         <img src="imagenes/proyecto-ventas.png" alt="Dashboard de Ventas" class="rounded mb-4">
         <h4 class="text-xl font-semibold">Dashboard de Ventas</h4>
         <p class="text-sm mt-2 mb-4">Power BI con análisis de ventas por producto, canal y margen.</p>
-        <a href="https://github.com/Juancanchala/dashboard-gestion-ventas-powerbi" class="text-blue-600 underline">Ver proyecto</a>
+        <a href="https://github.com/Juancanchala/dashboard-gestion-ventas-powerbi" target="_blank" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Ver proyecto</a>
       </div>
     </div>
   </section>
 
   <!-- Servicios -->
   <section id="servicios" class="p-10 bg-yellow-50">
-    <h3 class="text-2xl font-bold mb-6">📈 Servicios de D'LOGIA</h3>
-    <ul class="list-disc ml-6">
+    <h3 class="text-2xl font-bold mb-6">📊 Servicios de D'LOGIA</h3>
+    <ul class="list-disc ml-6 text-left max-w-2xl mx-auto">
       <li>Automatización de procesos empresariales</li>
       <li>Dashboards profesionales en Power BI / Excel</li>
       <li>Desarrollo de asistentes virtuales y bots</li>
@@ -89,22 +104,14 @@
   </section>
 
   <!-- Contacto -->
-  <section id="contacto" class="p-10 bg-white">
-    <h3 class="text-2xl font-bold mb-6">📞 Contáctame</h3>
-    <p class="mb-4">¿Te interesa una solución personalizada? Escríbeme directamente:</p>
-    <div class="flex flex-wrap gap-4">
-      <a href="https://wa.me/573124942672" class="flex items-center gap-2 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">
-        <img src="imagenes/icono-whatsapp.png" alt="WhatsApp" class="w-5 h-5"> WhatsApp
-      </a>
-      <a href="https://github.com/Juancanchala" class="flex items-center gap-2 bg-gray-800 text-white px-6 py-2 rounded-lg hover:bg-gray-900">
-        <img src="imagenes/icono-github.png" alt="GitHub" class="w-5 h-5"> GitHub
-      </a>
-      <a href="https://www.linkedin.com/in/ingjuancanchala" class="flex items-center gap-2 bg-blue-700 text-white px-6 py-2 rounded-lg hover:bg-blue-800">
-        <img src="imagenes/icono-linkedin.png" alt="LinkedIn" class="w-5 h-5"> LinkedIn
-      </a>
-      <a href="imagenes/CV%20Juan%20Camilo%20Canchala%20Ingeniero%20Industrial%20BI.pdf" download class="flex items-center gap-2 bg-yellow-600 text-white px-6 py-2 rounded-lg hover:bg-yellow-700">
-        <img src="imagenes/icono-cv.png" alt="CV" class="w-5 h-5"> Descargar CV
-      </a>
+  <section id="contacto" class="p-10 bg-white text-center">
+    <h3 class="text-2xl font-bold mb-4">📞 Contáctame</h3>
+    <p class="mb-6">¿Te interesa una solución personalizada? Escríbeme directamente:</p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="https://wa.me/573124942672" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">WhatsApp</a>
+      <a href="https://github.com/Juancanchala" class="bg-gray-800 text-white px-6 py-2 rounded-lg hover:bg-gray-900">GitHub</a>
+      <a href="https://www.linkedin.com/in/ingjuancanchala" class="bg-blue-700 text-white px-6 py-2 rounded-lg hover:bg-blue-800">LinkedIn</a>
+      <a href="imagenes/CV%20Juan%20Camilo%20Canchala%20Ingeniero%20Industrial%20BI.pdf" download class="bg-yellow-600 text-white px-6 py-2 rounded-lg hover:bg-yellow-700">Descargar CV</a>
     </div>
   </section>
 
@@ -132,5 +139,6 @@
       retina_detect: true
     });
   </script>
+
 </body>
 </html>

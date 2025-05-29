@@ -8,35 +8,58 @@
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <link rel="icon" href="imagenes/logo-dlogia.png" type="image/png">
   <style>
-    #particles-js {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: -1;
+    .animate-fade-in {
+      animation: fadeIn 1s ease-out both;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .zoomable {
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .zoomable:hover {
+      transform: scale(1.05);
+    }
+  </style>
+  <style>
+    .animate-fade-in {
+      animation: fadeIn 1s ease-out both;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .zoomable {
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .zoomable:hover {
+      transform: scale(1.05);
     }
   </style>
 </head>
-<body class="bg-white text-gray-800 font-sans overflow-x-hidden relative">
+<body class="bg-white text-gray-800 font-sans overflow-x-hidden relative transition-all duration-700">
 
-<!-- Contenedor de partículas de fondo -->
-<div id="particles-js"></div>
+
 
 <!-- Navbar -->
 <nav class="w-full py-4 px-8 bg-white shadow-md fixed top-0 z-50 flex justify-center gap-8 font-medium">
   <a href="#sobre-mi" class="hover:text-yellow-600">Acerca de mí</a>
   <a href="#servicios" class="hover:text-yellow-600">Servicios</a>
   <a href="#proyectos" class="hover:text-yellow-600">Proyectos</a>
+  <a href="#dashboards" class="hover:text-yellow-600">Dashboards</a>
   <a href="#contacto" class="hover:text-yellow-600">Contacto</a>
 </nav>
 
 <!-- Espaciador para navbar -->
-<div class="pt-24"></div>
+<div class="pt-6"></div>
 
 <!-- Hero / Presentación inicial -->
-<section class="relative text-center pt-16 pb-10 fade-in">
-  <div class="z-10">
+<section class="relative text-center pt-20 pb-6 fade-in">
+  <div class="absolute inset-0" id="particles-js"></div>
+  <div class="relative z-10">
     <h1 class="text-3xl md:text-4xl font-bold text-gray-800">Juan Camilo Canchala</h1>
     <p class="text-base md:text-lg text-gray-600">DataOps & Business Intelligence</p>
     <img src="imagenes/logo-dlogia.png" alt="Logo D'LOGIA" class="mx-auto w-40 my-6">
@@ -90,30 +113,88 @@
 </section>
 
 <!-- Proyectos -->
-<section id="proyectos" class="p-10 bg-white">
+<section id="proyectos" class="p-10 bg-white animate-fade-in">
   <h3 class="text-2xl font-bold mb-10 text-center text-gray-800">🚀 Proyectos Destacados</h3>
-  <div class="grid md:grid-cols-2 gap-8">
-    <!-- Proyecto 1: Asistente Virtual DILO -->
+  <div class="grid md:grid-cols-1 gap-8 max-w-4xl mx-auto">
+    <!-- Proyecto DILO -->
     <div class="bg-white rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-transform hover:scale-105 p-6 relative">
       <span class="absolute top-4 right-4 text-xs bg-yellow-500 text-white px-3 py-1 rounded-full">Chatbot</span>
-      <img src="imagenes/dilo-nueva.webp" alt="Asistente Virtual DILO" class="rounded-xl mb-4 w-full max-h-64 object-cover shadow-sm">
+      <img src="imagenes/dilo-nueva.webp" alt="Asistente Virtual DILO" class="rounded-xl mb-4 w-full max-h-64 object-cover shadow-sm zoomable">
       <h4 class="text-xl font-semibold text-center text-gray-800">🤖 Asistente Virtual DILO</h4>
-      <p class="text-sm mt-3 mb-5 text-center text-gray-600">Desarrollado con Flask, OpenAI y WhatsApp API. Automatiza procesos con calidez profesional.</p>
+      <p class="text-sm mt-3 mb-2 text-center text-gray-600">Asistente creado para automatizar atención profesional en empresas.</p>
+      <div class="flex flex-wrap gap-2 justify-center text-xs mb-4">
+        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Flask</span>
+        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">OpenAI</span>
+        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">WhatsApp API</span>
+      </div>
       <div class="flex gap-3 justify-center">
         <a href="https://wa.me/573124942672" target="_blank" class="bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700">Probar</a>
         <a href="https://github.com/Juancanchala/asistente-virtual-dilo-mvp" target="_blank" class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-900">Ver GitHub</a>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Proyecto 2: Dashboard de Ventas -->
-    <div class="bg-white rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-transform hover:scale-105 p-6 relative">
-      <span class="absolute top-4 right-4 text-xs bg-blue-600 text-white px-3 py-1 rounded-full">Power BI</span>
-      <img src="imagenes/dashboard-ventas.avif" alt="Dashboard de Ventas" class="rounded-xl mb-4 w-full max-h-64 object-cover shadow-sm">
-      <h4 class="text-xl font-semibold text-center text-gray-800">📊 Dashboard de Ventas</h4>
-      <p class="text-sm mt-3 mb-5 text-center text-gray-600">Dashboard con análisis de ventas por producto, canal y margen. Interactivo y exportable.</p>
-      <div class="flex gap-3 justify-center">
-        <a href="https://dashboard-gestion-ventas-powerbi-2yc8wfasmscj2mpspfxtsd.streamlit.app/" target="_blank" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700">Ver demo</a>
-        <a href="https://github.com/Juancanchala/dashboard-gestion-ventas-powerbi" target="_blank" class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-900">Ver GitHub</a>
+<!-- Dashboards Carrusel -->
+<section id="dashboards" class="py-16 bg-gray-100 animate-fade-in">
+  <h3 class="text-3xl font-bold text-center mb-10 text-gray-800">📊 Galería de Dashboards</h3>
+  <div class="overflow-x-auto">
+    <div class="flex gap-6 px-6 md:px-20 lg:px-32 pb-6 snap-x snap-mandatory overflow-x-scroll">
+      <!-- Tarjeta 1: Ventas -->
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 min-w-[300px] max-w-sm snap-center">
+        <img src="imagenes/dashboard-ventas.avif" alt="Dashboard de Ventas" class="rounded-xl mb-3 w-full h-48 object-cover zoomable">
+        <h4 class="text-lg font-semibold text-center text-gray-800">📊 Dashboard de Ventas</h4>
+        <p class="text-sm mt-2 mb-3 text-center text-gray-600">Análisis por canal, producto y margen en tiempo real.</p>
+        <div class="flex justify-center gap-2 text-xs mb-3">
+          <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Power BI</span>
+          <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Streamlit</span>
+        </div>
+        <div class="flex gap-2 justify-center">
+          <a href="#" class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm">Ver demo</a>
+          <a href="#" class="bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-900 text-sm">GitHub</a>
+        </div>
+      </div>
+      <!-- Tarjeta 2: Logística -->
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 min-w-[300px] max-w-sm snap-center">
+        <img src="imagenes/dashboard-logistica.png" alt="Dashboard Logística" class="rounded-xl mb-3 w-full h-48 object-cover zoomable">
+        <h4 class="text-lg font-semibold text-center text-gray-800">🚚 Dashboard Logístico</h4>
+        <p class="text-sm mt-2 mb-3 text-center text-gray-600">Indicadores clave de transporte, rutas y disponibilidad.</p>
+        <div class="flex justify-center gap-2 text-xs mb-3">
+          <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Power BI</span>
+          <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">ETL</span>
+        </div>
+        <div class="flex gap-2 justify-center">
+          <a href="#" class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm">Ver demo</a>
+          <a href="#" class="bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-900 text-sm">GitHub</a>
+        </div>
+      </div>
+      <!-- Tarjeta 3: Finanzas -->
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 min-w-[300px] max-w-sm snap-center">
+        <img src="imagenes/dashboard-finanzas.png" alt="Dashboard Finanzas" class="rounded-xl mb-3 w-full h-48 object-cover zoomable">
+        <h4 class="text-lg font-semibold text-center text-gray-800">💰 Dashboard Financiero</h4>
+        <p class="text-sm mt-2 mb-3 text-center text-gray-600">Control de flujo de caja, ingresos y egresos.</p>
+        <div class="flex justify-center gap-2 text-xs mb-3">
+          <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Power BI</span>
+          <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Automatización</span>
+        </div>
+        <div class="flex gap-2 justify-center">
+          <a href="#" class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm">Ver demo</a>
+          <a href="#" class="bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-900 text-sm">GitHub</a>
+        </div>
+      </div>
+      <!-- Tarjeta 4: Six Sigma -->
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 min-w-[300px] max-w-sm snap-center">
+        <img src="imagenes/dashboard-sixsigma.png" alt="Dashboard Six Sigma" class="rounded-xl mb-3 w-full h-48 object-cover zoomable">
+        <h4 class="text-lg font-semibold text-center text-gray-800">🧪 Dashboard Six Sigma</h4>
+        <p class="text-sm mt-2 mb-3 text-center text-gray-600">Análisis estadístico de calidad y control de procesos.</p>
+        <div class="flex justify-center gap-2 text-xs mb-3">
+          <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Power BI</span>
+          <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Lean</span>
+        </div>
+        <div class="flex gap-2 justify-center">
+          <a href="#" class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm">Ver demo</a>
+          <a href="#" class="bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-900 text-sm">GitHub</a>
+        </div>
       </div>
     </div>
   </div>
@@ -157,6 +238,32 @@
     },
     retina_detect: true
   });
+</script>
+
+<!-- Modal para imágenes -->
+<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50">
+  <span class="absolute top-5 right-8 text-white text-3xl cursor-pointer" onclick="closeModal()">&times;</span>
+  <img id="modalImage" class="max-w-3xl max-h-[80vh] rounded shadow-lg">
+</div>
+
+<script>
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImage');
+  const zoomables = document.querySelectorAll('.zoomable');
+
+  zoomables.forEach(img => {
+    img.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+    });
+  });
+
+  function closeModal() {
+    modal.classList.remove('flex');
+    modal.classList.add('hidden');
+  }
 </script>
 
 </body>

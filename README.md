@@ -1,4 +1,5 @@
-# 🌐 Portafolio Profesional – Juan Camilo Canchala | [D'LOGIA](https://juancanchala.github.io)
+# 🌐 Portafolio Profesional – Juan Camilo Canchala
+##[D'LOGIA](https://juancanchala.github.io)
 
 ¡Bienvenido! Este repositorio contiene el código fuente de mi sitio web personal, desarrollado como una **landing page profesional y comercial** bajo la marca **D'LOGIA**, orientada a soluciones empresariales con tecnología, automatización e inteligencia artificial.
 

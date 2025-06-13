@@ -1,145 +1,123 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- ENCABEZADO DEL SITIO -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>D'LOGIA | Portafolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <link rel="icon" href="imagenes/logo-dlogia.png" type="image/png">
+  <meta name="description" content="Portafolio profesional de Juan Camilo Canchala, especializado en BI, DataOps y automatización con D’LOGIA.">
+  <meta name="author" content="Juan Camilo Canchala">
+  <meta property="og:title" content="Portafolio Juan Camilo | D'LOGIA">
+  <meta property="og:image" content="https://juancanchala.github.io/imagenes/logo-dlogia.png">
+  <meta property="og:url" content="https://juancanchala.github.io">
+  <meta property="og:type" content="website">
   <style>
-    .animate-fade-in {
-      animation: fadeIn 1s ease-out both;
-    }
+    .animate-fade-in { animation: fadeIn 1s ease-out both; }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .zoomable {
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-    .zoomable:hover {
-      transform: scale(1.05);
-    }
-  </style>
-  <style>
-    .animate-fade-in {
-      animation: fadeIn 1s ease-out both;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .zoomable {
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-    .zoomable:hover {
-      transform: scale(1.05);
-    }
+    .zoomable { transition: transform 0.3s ease; cursor: pointer; }
+    .zoomable:hover { transform: scale(1.05); }
   </style>
 </head>
-<body class="bg-white text-gray-800 font-sans overflow-x-hidden relative transition-all duration-700">
+<body class="bg-white text-gray-800 font-sans overflow-x-hidden relative scroll-smooth">
 
+  <!-- BOTÓN FLOTANTE WHATSAPP -->
+  <a href="https://wa.me/573124942672" target="_blank" class="fixed bottom-5 right-5 bg-green-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-green-700 z-50">📲 Asesoría</a>
+  <div id="particles-js" class="fixed inset-0 -z-10"></div>
 
+  <!-- NAVBAR -->
+  <nav class="w-full py-4 px-8 bg-white shadow-md fixed top-0 z-50 flex justify-center gap-8 font-medium">
+    <a href="#sobre-mi" class="hover:text-yellow-600">Acerca de mí</a>
+    <a href="#servicios" class="hover:text-yellow-600">Servicios</a>
+    <a href="#proyectos" class="hover:text-yellow-600">Proyectos</a>
+    <a href="#dashboards" class="hover:text-yellow-600">Dashboards</a>
+    <a href="#contacto" class="hover:text-yellow-600">Contacto</a>
+  </nav>
+  <div class="pt-6"></div>
 
-<!-- Navbar -->
-<nav class="w-full py-4 px-8 bg-white shadow-md fixed top-0 z-50 flex justify-center gap-8 font-medium">
-  <a href="#sobre-mi" class="hover:text-yellow-600">Acerca de mí</a>
-  <a href="#servicios" class="hover:text-yellow-600">Servicios</a>
-  <a href="#proyectos" class="hover:text-yellow-600">Proyectos</a>
-  <a href="#dashboards" class="hover:text-yellow-600">Dashboards</a>
-  <a href="#contacto" class="hover:text-yellow-600">Contacto</a>
-</nav>
-
-<!-- Espaciador para navbar -->
-<div class="pt-6"></div>
-
-<!-- Hero / Presentación inicial -->
-<section class="relative text-center pt-20 pb-6 fade-in">
-  <div class="absolute inset-0" id="particles-js"></div>
-  <div class="relative z-10">
-    <h1 class="text-3xl md:text-4xl font-bold text-gray-800">Juan Camilo Canchala</h1>
-    <p class="text-base md:text-lg text-gray-600">DataOps & Business Intelligence</p>
-    <img src="imagenes/logo-dlogia.png" alt="Logo D'LOGIA" class="mx-auto w-40 my-6">
-    <div class="flex justify-center gap-4 mt-4">
-      <a href="https://wa.me/573124942672" target="_blank">
-        <img src="imagenes/icono-whatsapp.png" alt="WhatsApp" class="w-8 h-8">
-      </a>
-      <a href="https://github.com/Juancanchala" target="_blank">
-        <img src="imagenes/icono-github.png" alt="GitHub" class="w-8 h-8">
-      </a>
-      <a href="https://www.linkedin.com/in/ingjuancanchala" target="_blank">
-        <img src="imagenes/icono-linkedin.png" alt="LinkedIn" class="w-8 h-8">
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Bienvenida -->
-<section class="text-center py-16 bg-gray-100">
-  <h2 class="text-3xl font-bold mb-4">Bienvenido a mi portafolio</h2>
-  <p class="text-lg max-w-xl mx-auto">Aquí encontrarás mis proyectos destacados, servicios profesionales y formas de contacto para transformar los datos en decisiones inteligentes.</p>
-</section>
-
-<!-- Sobre mí -->
-<section id="sobre-mi" class="text-center py-16 bg-white relative z-10">
-  <h2 class="text-3xl font-bold mb-4">👨‍💼 Sobre mí</h2>
-  <p class="text-lg max-w-3xl mx-auto">Soy Ingeniero Industrial con especialización en Supply Chain Management, enfocado en soluciones de <strong>Business Intelligence</strong> y <strong>DataOps</strong>. Combino experiencia operativa real con capacidades de análisis y automatización para transformar procesos empresariales.</p>
-</section>
-
-<!-- Servicios -->
-<section id="servicios" class="p-10 bg-gray-100">
-  <h3 class="text-2xl font-bold mb-6 text-center">🔧 Servicios de D'LOGIA</h3>
-  <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-transform hover:scale-105">
-      <h4 class="text-xl font-semibold text-yellow-600 text-center mb-2">⚙️ Automatización Empresarial</h4>
-      <p class="text-gray-600 text-sm text-center">Digitalizamos procesos clave para que tu operación gane tiempo y escalabilidad.</p>
-    </div>
-    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-transform hover:scale-105">
-      <h4 class="text-xl font-semibold text-yellow-600 text-center mb-2">📊 Dashboards Inteligentes</h4>
-      <p class="text-gray-600 text-sm text-center">Transformamos tus datos en decisiones con dashboards ágiles y personalizados. También creamos apps de visualización en tiempo real.</p>
-    </div>
-    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-transform hover:scale-105">
-      <h4 class="text-xl font-semibold text-yellow-600 text-center mb-2">🤖 Asistentes Virtuales</h4>
-      <p class="text-gray-600 text-sm text-center">Bots inteligentes que venden, atienden y automatizan conversaciones estratégicas.</p>
-    </div>
-    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-transform hover:scale-105">
-      <h4 class="text-xl font-semibold text-yellow-600 text-center mb-2">🌐 Portafolios y Webs</h4>
-      <p class="text-gray-600 text-sm text-center">Creamos páginas modernas para mostrar tus proyectos, servicios o perfil profesional con impacto.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Proyectos -->
-<section id="proyectos" class="p-10 bg-white animate-fade-in">
-  <h3 class="text-2xl font-bold mb-10 text-center text-gray-800">🚀 Proyectos Destacados</h3>
-  <div class="grid md:grid-cols-1 gap-8 max-w-4xl mx-auto">
-    <!-- Proyecto DILO -->
-    <div class="bg-white rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-transform hover:scale-105 p-6 relative">
-      <span class="absolute top-4 right-4 text-xs bg-yellow-500 text-white px-3 py-1 rounded-full">Chatbot</span>
-      <img src="imagenes/dilo-nueva.webp" alt="Asistente Virtual DILO" class="rounded-xl mb-4 w-full max-h-64 object-cover shadow-sm zoomable">
-      <h4 class="text-xl font-semibold text-center text-gray-800">🤖 Asistente Virtual DILO</h4>
-      <p class="text-sm mt-3 mb-2 text-center text-gray-600">Asistente creado para automatizar atención profesional en empresas.</p>
-      <div class="flex flex-wrap gap-2 justify-center text-xs mb-4">
-        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Flask</span>
-        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">OpenAI</span>
-        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">WhatsApp API</span>
-      </div>
-      <div class="flex gap-3 justify-center">
-        <a href="https://wa.me/573124942672" target="_blank" class="bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700">Probar</a>
-        <a href="https://github.com/Juancanchala/asistente-virtual-dilo-mvp" target="_blank" class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-900">Ver GitHub</a>
+  <!-- HERO -->
+  <section class="relative text-center pt-20 pb-6 fade-in">
+    <div class="absolute inset-0" id="particles-js"></div>
+    <div class="relative z-10">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-800">Juan Camilo Canchala</h1>
+      <p class="text-base md:text-lg text-gray-600">DataOps & Business Intelligence</p>
+      <img src="imagenes/logo-dlogia.png" alt="Logo D'LOGIA" class="mx-auto w-40 my-6">
+      <div class="flex justify-center gap-4 mt-4">
+        <a href="https://wa.me/573124942672" target="_blank"><img src="imagenes/icono-whatsapp.png" class="w-8 h-8"></a>
+        <a href="https://github.com/Juancanchala" target="_blank"><img src="imagenes/icono-github.png" class="w-8 h-8"></a>
+        <a href="https://www.linkedin.com/in/ingjuancanchala" target="_blank"><img src="imagenes/icono-linkedin.png" class="w-8 h-8"></a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Dashboards Carrusel -->
+  <!-- BIENVENIDA -->
+  <section class="text-center py-16 bg-gray-100">
+    <h2 class="text-3xl font-bold mb-4">Bienvenido a mi portafolio</h2>
+    <p class="text-lg max-w-xl mx-auto">Aquí encontrarás mis proyectos destacados, servicios profesionales y formas de contacto para transformar los datos en decisiones inteligentes.</p>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section id="sobre-mi" class="text-center py-16 bg-white relative z-10">
+    <h2 class="text-3xl font-bold mb-4">👨‍💼 Sobre mí</h2>
+    <p class="text-lg max-w-3xl mx-auto">Soy Ingeniero Industrial con especialización en Supply Chain Management, enfocado en soluciones de <strong>Business Intelligence</strong> y <strong>DataOps</strong>. Combino experiencia operativa real con capacidades de análisis y automatización para transformar procesos empresariales.</p>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="p-10 bg-gray-100">
+    <h3 class="text-2xl font-bold mb-6 text-center">🔧 Servicios de D'LOGIA</h3>
+    <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+      <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-transform hover:scale-105">
+        <h4 class="text-xl font-semibold text-yellow-600 text-center mb-2">⚙️ Automatización Empresarial</h4>
+        <p class="text-gray-600 text-sm text-center">Digitalizamos procesos clave para que tu operación gane tiempo y escalabilidad.</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-transform hover:scale-105">
+        <h4 class="text-xl font-semibold text-yellow-600 text-center mb-2">📊 Dashboards Inteligentes</h4>
+        <p class="text-gray-600 text-sm text-center">Transformamos tus datos en decisiones con dashboards ágiles y personalizados. También creamos apps de visualización en tiempo real.</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-transform hover:scale-105">
+        <h4 class="text-xl font-semibold text-yellow-600 text-center mb-2">🤖 Asistentes Virtuales</h4>
+        <p class="text-gray-600 text-sm text-center">Bots inteligentes que venden, atienden y automatizan conversaciones estratégicas.</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-transform hover:scale-105">
+        <h4 class="text-xl font-semibold text-yellow-600 text-center mb-2">🌐 Portafolios y Webs</h4>
+        <p class="text-gray-600 text-sm text-center">Creamos páginas modernas para mostrar tus proyectos, servicios o perfil profesional con impacto.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos" class="p-10 bg-white animate-fade-in">
+    <h3 class="text-2xl font-bold mb-10 text-center text-gray-800">🚀 Proyectos Destacados</h3>
+    <div class="grid md:grid-cols-1 gap-8 max-w-4xl mx-auto">
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-transform hover:scale-105 p-6 relative">
+        <span class="absolute top-4 right-4 text-xs bg-yellow-500 text-white px-3 py-1 rounded-full">Chatbot</span>
+        <img src="imagenes/dilo-nueva.webp" alt="Asistente Virtual DILO" class="rounded-xl mb-4 w-full max-h-64 object-cover shadow-sm zoomable">
+        <h4 class="text-xl font-semibold text-center text-gray-800">🤖 Asistente Virtual DILO</h4>
+        <p class="text-sm mt-3 mb-2 text-center text-gray-600">Asistente creado para automatizar atención profesional en empresas.</p>
+        <div class="flex flex-wrap gap-2 justify-center text-xs mb-4">
+          <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Flask</span>
+          <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">OpenAI</span>
+          <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">WhatsApp API</span>
+        </div>
+        <div class="flex gap-3 justify-center">
+          <a href="https://wa.me/573124942672" target="_blank" class="bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700">Probar</a>
+          <a href="https://github.com/Juancanchala/asistente-virtual-dilo-mvp" target="_blank" class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-900">Ver GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARDS -->
 <section id="dashboards" class="py-16 bg-gray-100 animate-fade-in">
   <h3 class="text-3xl font-bold text-center mb-10 text-gray-800">📊 Galería de Dashboards</h3>
   <div class="overflow-x-auto">
     <div class="flex gap-6 px-6 md:px-20 lg:px-32 pb-6 snap-x snap-mandatory overflow-x-scroll">
+
       <!-- Tarjeta 1: Ventas -->
       <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 min-w-[300px] max-w-sm snap-center">
         <img src="imagenes/dashboard-ventas.avif" alt="Dashboard de Ventas" class="rounded-xl mb-3 w-full h-48 object-cover zoomable">
@@ -154,6 +132,7 @@
           <a href="#" class="bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-900 text-sm">GitHub</a>
         </div>
       </div>
+
       <!-- Tarjeta 2: Logística -->
       <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 min-w-[300px] max-w-sm snap-center">
         <img src="imagenes/dashboard-logistica.png" alt="Dashboard Logística" class="rounded-xl mb-3 w-full h-48 object-cover zoomable">
@@ -168,6 +147,7 @@
           <a href="#" class="bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-900 text-sm">GitHub</a>
         </div>
       </div>
+
       <!-- Tarjeta 3: Finanzas -->
       <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 min-w-[300px] max-w-sm snap-center">
         <img src="imagenes/dashboard-finanzas.png" alt="Dashboard Finanzas" class="rounded-xl mb-3 w-full h-48 object-cover zoomable">
@@ -182,6 +162,7 @@
           <a href="#" class="bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-900 text-sm">GitHub</a>
         </div>
       </div>
+
       <!-- Tarjeta 4: Six Sigma -->
       <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 min-w-[300px] max-w-sm snap-center">
         <img src="imagenes/dashboard-sixsigma.png" alt="Dashboard Six Sigma" class="rounded-xl mb-3 w-full h-48 object-cover zoomable">
@@ -196,76 +177,58 @@
           <a href="#" class="bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-900 text-sm">GitHub</a>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- Contacto -->
-<section id="contacto" class="p-10 bg-white text-center relative">
-  <div class="absolute inset-0" id="particles-js"></div>
-  <div class="relative z-10">
-    <h3 class="text-2xl font-bold mb-4">📞 Contáctame</h3>
-    <p class="mb-6">¿Te interesa una solución personalizada? Escríbeme directamente:</p>
-    <div class="flex flex-wrap justify-center gap-4">
-      <a href="https://wa.me/573124942672" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">WhatsApp</a>
-      <a href="https://github.com/Juancanchala" class="bg-gray-800 text-white px-6 py-2 rounded-lg hover:bg-gray-900">GitHub</a>
-      <a href="https://www.linkedin.com/in/ingjuancanchala" class="bg-blue-700 text-white px-6 py-2 rounded-lg hover:bg-blue-800">LinkedIn</a>
-      <a href="imagenes/CV%20Juan%20Camilo%20Canchala%20Ingeniero%20Industrial%20BI.pdf" download class="bg-yellow-600 text-white px-6 py-2 rounded-lg hover:bg-yellow-700">Descargar CV</a>
+<!-- CONTACTO -->
+  <section id="contacto" class="p-10 bg-white text-center relative">
+    <div class="absolute inset-0" id="particles-js"></div>
+    <div class="relative z-10">
+      <h3 class="text-2xl font-bold mb-4">📞 Contáctame</h3>
+      <p class="mb-6">¿Te interesa una solución personalizada? Escríbeme directamente:</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="https://wa.me/573124942672" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">WhatsApp</a>
+        <a href="https://github.com/Juancanchala" class="bg-gray-800 text-white px-6 py-2 rounded-lg hover:bg-gray-900">GitHub</a>
+        <a href="https://www.linkedin.com/in/ingjuancanchala" class="bg-blue-700 text-white px-6 py-2 rounded-lg hover:bg-blue-800">LinkedIn</a>
+        <a href="imagenes/CV%20Juan%20Camilo%20Canchala%20Ingeniero%20Industrial%20BI.pdf" download class="bg-yellow-600 text-white px-6 py-2 rounded-lg hover:bg-yellow-700">Descargar CV</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Footer -->
-<footer class="text-center p-4 text-sm bg-gray-50 text-gray-500">
-  © 2025 D'LOGIA – Todos los derechos reservados
-</footer>
+  <!-- FOOTER -->
+  <footer class="text-center p-4 text-sm bg-gray-50 text-gray-500">
+    © 2025 D'LOGIA – Todos los derechos reservados
+  </footer>
 
-<!-- Partículas -->
-<script>
-  particlesJS("particles-js", {
-    particles: {
-      number: { value: 60, density: { enable: true, value_area: 800 } },
-      color: { value: "#999999" },
-      shape: { type: "circle" },
-      opacity: { value: 0.5, random: true },
-      size: { value: 3, random: true },
-      line_linked: { enable: true, distance: 150, color: "#cccccc", opacity: 0.4, width: 1 },
-      move: { enable: true, speed: 2 }
-    },
-    interactivity: {
-      events: { onhover: { enable: true, mode: "repulse" } },
-      modes: { repulse: { distance: 100 } }
-    },
-    retina_detect: true
-  });
-</script>
-
-<!-- Modal para imágenes -->
-<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50">
-  <span class="absolute top-5 right-8 text-white text-3xl cursor-pointer" onclick="closeModal()">&times;</span>
-  <img id="modalImage" class="max-w-3xl max-h-[80vh] rounded shadow-lg">
-</div>
-
-<script>
-  const modal = document.getElementById('imageModal');
-  const modalImg = document.getElementById('modalImage');
-  const zoomables = document.querySelectorAll('.zoomable');
-
-  zoomables.forEach(img => {
-    img.addEventListener('click', () => {
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-      modalImg.src = img.src;
-      modalImg.alt = img.alt;
+  <!-- SCRIPT DE PARTÍCULAS -->
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 100, density: { enable: true, value_area: 800 } },
+        color: { value: "#facc15" },
+        shape: { type: "circle" },
+        opacity: { value: 1.0, random: true },
+        size: { value: 5, random: true },
+        line_linked: { enable: true, distance: 110, color: "#facc15", opacity: 0.6, width: 1 },
+        move: { enable: true, speed: 2 }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" },
+          resize: true
+        },
+        modes: {
+          grab: { distance: 180, line_linked: { opacity: 0.9 } },
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
     });
-  });
-
-  function closeModal() {
-    modal.classList.remove('flex');
-    modal.classList.add('hidden');
-  }
-</script>
-
+  </script>
 </body>
 </html>
 

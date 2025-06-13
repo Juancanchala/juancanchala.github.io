@@ -6,11 +6,11 @@
 
 ## 🚀 Objetivo del Proyecto
 
-El propósito de este sitio es presentar mi perfil como profesional independiente en el ecosistema de datos e IA. Incluye:
+El propósito de este sitio es presentar mi portafolio profesional como **analista de datos, ingeniero en automatización y consultor en inteligencia artificial aplicada**.  
+Está diseñado tanto para:
 
-- 🎯 **Proyectos destacados**: dashboards interactivos, asistentes virtuales, automatizaciones con Python, n8n y Google Cloud.
-- 🛠️ **Servicios ofrecidos**: Business Intelligence, automatización de procesos, desarrollo de asistentes virtuales, páginas web empresariales.
-- 📞 **Canales de contacto directo**: para asesorías, propuestas de colaboración o contratación.
+- 🏢 **Empresas que deseen contratarme directamente**, ya sea en modalidad fija, remota o por proyectos.
+- 🤝 **Clientes que necesiten servicios independientes** en áreas como BI, automatización, dashboards o asistentes virtuales, respaldados por mi firma D’LOGIA.
 
 > 🔗 **Sitio en vivo**: [https://juancanchala.github.io](https://juancanchala.github.io)
 

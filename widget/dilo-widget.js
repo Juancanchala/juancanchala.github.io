@@ -1,4 +1,4 @@
-// DILO Widget - D'LOGIA JavaScript
+// DILO Widget - D'LOGIA JavaScript junio 30
 (function() {
     'use strict';
     

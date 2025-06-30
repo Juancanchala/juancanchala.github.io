@@ -4,7 +4,7 @@
     
     // Configuración
     const DILO_CONFIG = {
-        streamlitUrl: 'TU_URL_DE_STREAMLIT_AQUÍ', // Cambiar por tu URL de Streamlit
+      streamlitUrl: 'https://dilo-asistente-virtual.streamlit.app', // Cambiar por tu URL de Streamlit
         position: 'bottom-right',
         autoShow: false,
         showBadge: true

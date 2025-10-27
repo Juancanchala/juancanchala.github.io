@@ -6,7 +6,6 @@
   <title>D'LOGIA | Datos, Lógica & Inteligencia Artificial</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <link rel="icon" href="imagenes/logo-dlogia.png" type="image/png">
   
   <!-- SEO Mejorado -->
@@ -19,15 +18,121 @@
   <meta property="og:url" content="https://dlogia.tech">
   
   <style>
-    body { background: #f8f9fa; }
+    /* Variables para tema - CONTRASTE PERFECTO */
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f9fafb;
+      --bg-card: #ffffff;
+      --text-primary: #111827;
+      --text-secondary: #4b5563;
+      --text-tertiary: #6b7280;
+      --border-color: #e5e7eb;
+      --border-hover: #d1d5db;
+      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+      --input-bg: #ffffff;
+      --input-border: #d1d5db;
+    }
+    
+    [data-theme="dark"] {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-card: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #e2e8f0;
+      --text-tertiary: #cbd5e1;
+      --border-color: #475569;
+      --border-hover: #64748b;
+      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+      --input-bg: #334155;
+      --input-border: #475569;
+    }
+    
+    * {
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+    
+    body { 
+      background: var(--bg-primary);
+      color: var(--text-primary);
+    }
+    
+    /* Clases de fondo */
+    .bg-white { background: var(--bg-card) !important; }
+    .bg-gray-50 { background: var(--bg-secondary) !important; }
+    
+    /* Clases de texto con alto contraste */
+    .text-gray-800 { color: var(--text-primary) !important; }
+    .text-gray-700 { color: var(--text-primary) !important; }
+    .text-gray-600 { color: var(--text-secondary) !important; }
+    .text-gray-500 { color: var(--text-tertiary) !important; }
+    
+    /* Bordes */
+    .border-gray-200 { border-color: var(--border-color) !important; }
+    .border-gray-100 { border-color: var(--border-color) !important; }
+    
+    /* Inputs */
+    input, textarea {
+      background: var(--input-bg) !important;
+      border-color: var(--input-border) !important;
+      color: var(--text-primary) !important;
+    }
+    
+    input::placeholder, textarea::placeholder {
+      color: var(--text-tertiary) !important;
+    }
+    
+    /* Navbar fixed */
+    nav.fixed {
+      background: var(--bg-card) !important;
+      backdrop-filter: blur(10px);
+    }
+    
     .animate-fade-in { animation: fadeIn 1s ease-out both; }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    
+    /* Animaciones profesionales */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    .rotate-slow {
+      animation: rotate 20s linear infinite;
+    }
+    
     .zoomable { transition: transform 0.3s ease; cursor: pointer; }
     .zoomable:hover { transform: scale(1.05); }
-    .badge { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
+    
+    .badge { 
+      display: inline-block; 
+      padding: 4px 12px; 
+      border-radius: 12px; 
+      font-size: 0.75rem; 
+      font-weight: 600; 
+    }
     .badge-ready { background: #10b981; color: white; }
     .badge-updating { background: #f59e0b; color: white; }
     .badge-coming { background: #6b7280; color: white; }
@@ -37,7 +142,10 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
+      background: var(--bg-card);
+      box-shadow: var(--shadow);
     }
+    
     .project-card::before {
       content: '';
       position: absolute;
@@ -45,27 +153,145 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
       transition: left 0.5s;
     }
+    
     .project-card:hover::before {
       left: 100%;
     }
+    
     .project-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      box-shadow: var(--shadow-lg);
     }
     
-    /* Animación para Lottie en hover */
-    .lottie-icon {
-      transition: transform 0.3s ease;
+    /* SVG Icons con animaciones */
+    .icon-wrapper {
+      width: 100%;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      position: relative;
+      overflow: hidden;
     }
-    .project-card:hover .lottie-icon {
-      transform: scale(1.1);
+    
+    .icon-wrapper svg {
+      width: 80px;
+      height: 80px;
+      z-index: 2;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    }
+    
+    .icon-bg-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.1;
+      z-index: 1;
+    }
+    
+    /* Gradientes profesionales */
+    .gradient-blue {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .gradient-purple {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+    
+    .gradient-green {
+      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    }
+    
+    .gradient-orange {
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    }
+    
+    .gradient-cyan {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+    
+    .gradient-pink {
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    }
+    
+    /* Botón de tema mejorado */
+    .theme-toggle {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      z-index: 1000;
+      background: var(--bg-card);
+      border: 2px solid var(--border-color);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .theme-toggle:hover {
+      transform: scale(1.1) rotate(15deg);
+      border-color: var(--border-hover);
+    }
+    
+    /* Efectos hover mejorados */
+    .service-card {
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+    }
+    
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    /* Pattern backgrounds */
+    .pattern-dots {
+      background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    
+    .pattern-grid {
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+    
+    /* Mejoras de legibilidad */
+    [data-theme="dark"] .bg-gradient-to-br {
+      opacity: 0.9;
+    }
+    
+    [data-theme="dark"] p,
+    [data-theme="dark"] li,
+    [data-theme="dark"] span {
+      color: var(--text-secondary);
+    }
+    
+    [data-theme="dark"] h1,
+    [data-theme="dark"] h2,
+    [data-theme="dark"] h3,
+    [data-theme="dark"] h4,
+    [data-theme="dark"] h5 {
+      color: var(--text-primary);
     }
   </style>
 </head>
 <body class="text-gray-800 font-sans overflow-x-hidden relative scroll-smooth">
+
+  <!-- BOTÓN DE TEMA -->
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+    <span id="theme-icon" style="font-size: 24px;">🌙</span>
+  </button>
 
   <!-- NAVBAR -->
   <nav class="w-full py-4 px-8 bg-white shadow-md fixed top-0 z-50 flex justify-center gap-6 font-medium text-sm">
@@ -87,6 +313,7 @@
     <div class="flex justify-center items-center mb-6">
       <img src="imagenes/logo-dlogia.png"
            alt="Logo D'LOGIA"
+           onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22100%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2248%22 fill=%22%23333%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22 font-family=%22Arial, sans-serif%22 font-weight=%22bold%22%3ED%27LOGIA%3C/text%3E%3C/svg%3E'"
            class="w-[340px] md:w-[380px] lg:w-[400px] drop-shadow-lg transition-transform duration-300 hover:scale-105" />
     </div>
 
@@ -114,14 +341,14 @@
     
     <!-- Redes Sociales -->
     <div class="flex justify-center gap-4 mt-6">
-      <a href="https://wa.me/573124942672" target="_blank" class="hover:opacity-80 transition">
-        <img src="imagenes/icono-whatsapp.png" class="w-10 h-10" alt="WhatsApp">
+      <a href="https://wa.me/573124942672" target="_blank" class="hover:opacity-80 transition hover:scale-110 transform duration-200">
+        <svg class="w-10 h-10" fill="#25D366" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
       </a>
-      <a href="https://github.com/Juancanchala" target="_blank" class="hover:opacity-80 transition">
-        <img src="imagenes/icono-github.png" class="w-10 h-10" alt="GitHub">
+      <a href="https://github.com/Juancanchala" target="_blank" class="hover:opacity-80 transition hover:scale-110 transform duration-200">
+        <svg class="w-10 h-10 text-gray-800" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
       </a>
-      <a href="https://www.linkedin.com/in/ingjuancanchala" target="_blank" class="hover:opacity-80 transition">
-        <img src="imagenes/icono-linkedin.png" class="w-10 h-10" alt="LinkedIn">
+      <a href="https://www.linkedin.com/in/ingjuancanchala" target="_blank" class="hover:opacity-80 transition hover:scale-110 transform duration-200">
+        <svg class="w-10 h-10" fill="#0077B5" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </a>
     </div>
   </div>
@@ -129,8 +356,8 @@
 
   <!-- BIENVENIDA -->
   <section class="text-center py-16 bg-white">
-    <h2 class="text-3xl font-bold mb-4">Bienvenido a D'LOGIA</h2>
-    <p class="text-lg max-w-3xl mx-auto px-4">
+    <h2 class="text-3xl font-bold mb-4 text-gray-800">Bienvenido a D'LOGIA</h2>
+    <p class="text-lg max-w-3xl mx-auto px-4 text-gray-600">
       Especialistas en soluciones de datos e inteligencia artificial para empresas que buscan optimizar sus operaciones y tomar decisiones basadas en información estratégica.
     </p>
   </section>
@@ -148,15 +375,16 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
       <!-- NICHO 1: CONSULTORÍA -->
-      <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-lg p-8 hover:shadow-2xl transition border-2 border-blue-200">
-        <div class="flex justify-center mb-4">
-          <lottie-player 
-            src="https://lottie.host/54dafbce-747e-4992-8f3c-e3ed35173661/z8BVc3jwLz.json"
-            background="transparent" 
-            speed="1"
-            style="width: 120px; height: 120px;" 
-            loop autoplay>
-          </lottie-player>
+      <div class="service-card bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-lg p-8 border-2 border-blue-200">
+        <div class="flex justify-center mb-6">
+          <div class="relative">
+            <svg class="w-28 h-28 float-animation" viewBox="0 0 100 100" fill="none">
+              <circle cx="50" cy="50" r="45" fill="#3B82F6" opacity="0.1"/>
+              <path d="M30 45L45 60L70 35" stroke="#3B82F6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="50" cy="50" r="35" stroke="#3B82F6" stroke-width="3" fill="none"/>
+              <path d="M50 15V25M50 75V85M15 50H25M75 50H85" stroke="#3B82F6" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
         </div>
         <h4 class="text-2xl font-bold text-gray-800 mb-3 text-center">Consultoría Estratégica</h4>
         <p class="text-gray-700 mb-6 text-center">
@@ -170,22 +398,24 @@
           <li>✓ Estrategia de datos</li>
         </ul>
         <div class="text-center">
-          <a href="#consultoria" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition">
+          <a href="#consultoria" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition transform hover:scale-105">
             Más información
           </a>
         </div>
       </div>
 
       <!-- NICHO 2: DATA & BI -->
-      <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl shadow-lg p-8 hover:shadow-2xl transition border-2 border-purple-200">
-        <div class="flex justify-center mb-4">
-          <lottie-player 
-            src="https://lottie.host/13643f61-bc36-49cd-b261-1c674c92e70d/sFgZOE5cF2.json"
-            background="transparent" 
-            speed="1"
-            style="width: 120px; height: 120px;" 
-            loop autoplay>
-          </lottie-player>
+      <div class="service-card bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl shadow-lg p-8 border-2 border-purple-200">
+        <div class="flex justify-center mb-6">
+          <div class="relative">
+            <svg class="w-28 h-28 float-animation" viewBox="0 0 100 100" fill="none" style="animation-delay: 0.2s;">
+              <circle cx="50" cy="50" r="45" fill="#9333EA" opacity="0.1"/>
+              <rect x="25" y="45" width="10" height="30" rx="2" fill="#9333EA"/>
+              <rect x="45" y="35" width="10" height="40" rx="2" fill="#9333EA"/>
+              <rect x="65" y="25" width="10" height="50" rx="2" fill="#9333EA"/>
+              <path d="M20 70H80" stroke="#9333EA" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
         </div>
         <h4 class="text-2xl font-bold text-gray-800 mb-3 text-center">Data & BI</h4>
         <p class="text-gray-700 mb-6 text-center">
@@ -199,22 +429,25 @@
           <li>✓ SQL & Python scripts</li>
         </ul>
         <div class="text-center">
-          <a href="#data-bi" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition">
+          <a href="#data-bi" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition transform hover:scale-105">
             Ver proyectos
           </a>
         </div>
       </div>
 
       <!-- NICHO 3: IA & AUTOMATIZACIÓN -->
-      <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl shadow-lg p-8 hover:shadow-2xl transition border-2 border-orange-200">
-        <div class="flex justify-center mb-4">
-          <lottie-player 
-            src="https://lottie.host/6becb72d-2240-47f6-bbe4-36b1ca51bae2/hEIcMX9C1q.json"
-            background="transparent" 
-            speed="1"
-            style="width: 120px; height: 120px;" 
-            loop autoplay>
-          </lottie-player>
+      <div class="service-card bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl shadow-lg p-8 border-2 border-orange-200">
+        <div class="flex justify-center mb-6">
+          <div class="relative">
+            <svg class="w-28 h-28 float-animation" viewBox="0 0 100 100" fill="none" style="animation-delay: 0.4s;">
+              <circle cx="50" cy="50" r="45" fill="#F97316" opacity="0.1"/>
+              <circle cx="50" cy="35" r="8" fill="#F97316"/>
+              <circle cx="35" cy="60" r="8" fill="#F97316"/>
+              <circle cx="65" cy="60" r="8" fill="#F97316"/>
+              <path d="M50 43L50 52M43 57L35 52M57 57L65 52" stroke="#F97316" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="50" cy="35" r="12" stroke="#F97316" stroke-width="2" fill="none"/>
+            </svg>
+          </div>
         </div>
         <h4 class="text-2xl font-bold text-gray-800 mb-3 text-center">IA & Automatización</h4>
         <p class="text-gray-700 mb-6 text-center">
@@ -228,7 +461,7 @@
           <li>✓ Análisis predictivo</li>
         </ul>
         <div class="text-center">
-          <a href="#ia-automatizacion" class="inline-block bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition">
+          <a href="#ia-automatizacion" class="inline-block bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition transform hover:scale-105">
             Ver proyectos
           </a>
         </div>
@@ -238,7 +471,7 @@
 
     <!-- CTA Principal -->
     <div class="text-center mt-12">
-      <a href="#contacto" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-4 px-8 rounded-full text-lg transition shadow-lg">
+      <a href="#contacto" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-4 px-8 rounded-full text-lg transition shadow-lg transform hover:scale-105">
         💬 Agenda una consulta gratuita
       </a>
     </div>
@@ -249,14 +482,13 @@
 <section id="consultoria" class="py-16 bg-white">
   <div class="max-w-5xl mx-auto px-4">
     <div class="text-center mb-12">
-      <div class="flex justify-center mb-4">
-        <lottie-player 
-          src="https://lottie.host/54dafbce-747e-4992-8f3c-e3ed35173661/z8BVc3jwLz.json"
-          background="transparent" 
-          speed="1"
-          style="width: 150px; height: 150px;" 
-          loop autoplay>
-        </lottie-player>
+      <div class="flex justify-center mb-6">
+        <svg class="w-32 h-32 float-animation" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="45" fill="#3B82F6" opacity="0.1"/>
+          <rect x="30" y="35" width="40" height="30" rx="2" stroke="#3B82F6" stroke-width="3" fill="none"/>
+          <path d="M35 45H65M35 50H60M35 55H65" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/>
+          <path d="M25 35L30 30L35 35M75 35L70 30L65 35" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/>
+        </svg>
       </div>
       <h3 class="text-4xl font-bold text-gray-800 mb-4">Consultoría Estratégica</h3>
       <p class="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -328,60 +560,55 @@
       </div>
     </div>
 
-    <!-- Proceso con Lotties REALES -->
+    <!-- Proceso -->
     <div class="bg-white rounded-2xl shadow-lg p-8 mb-8 border-2 border-blue-200">
-      <h4 class="text-2xl font-bold text-gray-800 mb-8 text-center">
+      <h4 class="text-2xl font-bold text-gray-800 mb-8 text-center flex items-center justify-center gap-2">
         📋 Nuestro proceso
       </h4>
       <div class="grid md:grid-cols-4 gap-6">
         <div class="text-center">
-          <div class="flex justify-center mb-3">
-            <lottie-player 
-              src="https://lottie.host/e3ff877e-a6d6-4f9f-8798-e6d3ebd6f17c/2UdSCc6mzY.json"
-              background="transparent" 
-              speed="1"
-              style="width: 80px; height: 80px;" 
-              loop autoplay>
-            </lottie-player>
+          <div class="flex justify-center mb-4">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+              </svg>
+            </div>
           </div>
           <h5 class="font-bold text-gray-800 mb-2">1. Diagnóstico</h5>
           <p class="text-sm text-gray-600">Analizamos tu situación actual y objetivos</p>
         </div>
+        
         <div class="text-center">
-          <div class="flex justify-center mb-3">
-            <lottie-player 
-              src="https://lottie.host/4bb541ef-a1bc-43b2-892a-93a6bd259231/CKnNPDJHn6.json"
-              background="transparent" 
-              speed="1"
-              style="width: 80px; height: 80px;" 
-              loop autoplay>
-            </lottie-player>
+          <div class="flex justify-center mb-4">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+              </svg>
+            </div>
           </div>
           <h5 class="font-bold text-gray-800 mb-2">2. Diseño</h5>
           <p class="text-sm text-gray-600">Creamos la arquitectura y roadmap</p>
         </div>
+        
         <div class="text-center">
-          <div class="flex justify-center mb-3">
-            <lottie-player 
-              src="https://lottie.host/4bb541ef-a1bc-43b2-892a-93a6bd259231/CKnNPDJHn6.json"
-              background="transparent" 
-              speed="1"
-              style="width: 80px; height: 80px;" 
-              loop autoplay>
-            </lottie-player>
+          <div class="flex justify-center mb-4">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+              </svg>
+            </div>
           </div>
           <h5 class="font-bold text-gray-800 mb-2">3. Implementación</h5>
           <p class="text-sm text-gray-600">Desarrollamos y desplegamos soluciones</p>
         </div>
+        
         <div class="text-center">
-          <div class="flex justify-center mb-3">
-            <lottie-player 
-              src="https://lottie.host/e3ff877e-a6d6-4f9f-8798-e6d3ebd6f17c/2UdSCc6mzY.json"
-              background="transparent" 
-              speed="1"
-              style="width: 80px; height: 80px;" 
-              loop autoplay>
-            </lottie-player>
+          <div class="flex justify-center mb-4">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              </svg>
+            </div>
           </div>
           <h5 class="font-bold text-gray-800 mb-2">4. Transferencia</h5>
           <p class="text-sm text-gray-600">Capacitamos tu equipo y documentamos</p>
@@ -391,7 +618,7 @@
 
     <!-- CTA -->
     <div class="text-center">
-      <a href="#contacto" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full text-lg transition shadow-lg">
+      <a href="#contacto" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full text-lg transition shadow-lg transform hover:scale-105">
         📞 Agenda tu consulta estratégica
       </a>
       <p class="text-sm text-gray-600 mt-4">Primera sesión de diagnóstico sin costo</p>
@@ -403,14 +630,13 @@
 <section id="ia-automatizacion" class="py-16 bg-white">
   <div class="max-w-7xl mx-auto px-4">
     <div class="text-center mb-12">
-      <div class="flex justify-center mb-4">
-        <lottie-player 
-          src="https://lottie.host/54e152c2-bcc8-4b6c-89c6-373c405e4b23/QXkwQ6hO5M.json"
-          background="transparent" 
-          speed="1"
-          style="width: 150px; height: 150px;" 
-          loop autoplay>
-        </lottie-player>
+      <div class="flex justify-center mb-6">
+        <svg class="w-32 h-32 pulse-glow" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="45" fill="#F97316" opacity="0.1"/>
+          <path d="M50 30C40 30 35 35 35 45C35 55 40 60 50 70C60 60 65 55 65 45C65 35 60 30 50 30Z" stroke="#F97316" stroke-width="3" fill="none"/>
+          <circle cx="50" cy="45" r="5" fill="#F97316"/>
+          <path d="M30 55L40 65M70 55L60 65" stroke="#F97316" stroke-width="3" stroke-linecap="round"/>
+        </svg>
       </div>
       <h3 class="text-4xl font-bold text-gray-800 mb-4">IA & Automatización</h3>
       <p class="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -423,15 +649,13 @@
       <!-- PROYECTO 1: DILO ENGLISH COACH -->
       <div class="project-card bg-white rounded-2xl shadow-lg border-2 border-orange-200 p-6 relative">
         <span class="badge badge-ready absolute top-4 right-4 z-10">✅ En producción</span>
-        <div class="flex justify-center mb-4 lottie-icon">
-          <lottie-player 
-            src="https://lottie.host/fd60e184-be39-47d5-a76e-be27336fa839/KoY0H9XAgO.json"
-            background="transparent" 
-            speed="1"
-            style="width: 100px; height: 100px;" 
-            loop autoplay>
-          </lottie-player>
+        
+        <div class="bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl h-48 flex items-center justify-center mb-4">
+          <svg class="w-20 h-20 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+          </svg>
         </div>
+        
         <h4 class="text-xl font-semibold text-center text-gray-800 mb-2">Dilo English Coach</h4>
         <p class="text-sm text-gray-600 mb-3 text-center">
           Asistente IA conversacional en tiempo real para entrenamiento de inglés profesional. Streaming de audio con feedback personalizado.
@@ -442,23 +666,21 @@
           <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Speech-to-Text</span>
         </div>
         <div class="flex gap-3 justify-center">
-          <a href="https://dilo-english-coach.netlify.app/" target="_blank" class="bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700 text-sm transition">Ver demo</a>
-          <a href="#contacto" class="bg-orange-600 text-white px-5 py-2 rounded-lg hover:bg-orange-700 text-sm transition">Más info</a>
+          <a href="https://dilo-english-coach.netlify.app/" target="_blank" class="bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700 text-sm transition transform hover:scale-105">Ver demo</a>
+          <a href="#contacto" class="bg-orange-600 text-white px-5 py-2 rounded-lg hover:bg-orange-700 text-sm transition transform hover:scale-105">Más info</a>
         </div>
       </div>
 
       <!-- PROYECTO 2: TRAVEL ASSISTANT AI -->
       <div class="project-card bg-white rounded-2xl shadow-lg border-2 border-orange-200 p-6 relative">
         <span class="badge badge-ready absolute top-4 right-4 z-10">✅ Disponible</span>
-        <div class="flex justify-center mb-4 lottie-icon">
-          <lottie-player 
-            src="https://lottie.host/30749150-7e06-4b05-bce3-d42d4d8a9fc4/8GlQdAXBHr.json"
-            background="transparent" 
-            speed="1"
-            style="width: 100px; height: 100px;" 
-            loop autoplay>
-          </lottie-player>
+        
+        <div class="bg-gradient-to-br from-pink-100 to-pink-200 rounded-xl h-48 flex items-center justify-center mb-4">
+          <svg class="w-20 h-20 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
         </div>
+        
         <h4 class="text-xl font-semibold text-center text-gray-800 mb-2">Travel Assistant AI</h4>
         <p class="text-sm text-gray-600 mb-3 text-center">
           Sistema multiagente autónomo para planificación inteligente de viajes usando CrewAI. Agentes especializados colaborando.
@@ -469,23 +691,21 @@
           <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Multi-Agent</span>
         </div>
         <div class="flex gap-3 justify-center">
-          <a href="https://github.com/Juancanchala/travel-assistant-ai" target="_blank" class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-900 text-sm transition">Ver GitHub</a>
-          <a href="#contacto" class="bg-orange-600 text-white px-5 py-2 rounded-lg hover:bg-orange-700 text-sm transition">Más info</a>
+          <a href="https://github.com/Juancanchala/travel-assistant-ai" target="_blank" class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-900 text-sm transition transform hover:scale-105">Ver GitHub</a>
+          <a href="#contacto" class="bg-orange-600 text-white px-5 py-2 rounded-lg hover:bg-orange-700 text-sm transition transform hover:scale-105">Más info</a>
         </div>
       </div>
 
       <!-- PROYECTO 3: SERVER PROCESS PREDICTOR -->
       <div class="project-card bg-white rounded-2xl shadow-lg border-2 border-orange-200 p-6 relative">
         <span class="badge badge-ready absolute top-4 right-4 z-10">✅ Disponible</span>
-        <div class="flex justify-center mb-4 lottie-icon">
-          <lottie-player 
-            src="https://lottie.host/cd20e3d1-f384-4bfd-80d8-f8df48b840a0/VPTxgU8GhN.json"
-            background="transparent" 
-            speed="1"
-            style="width: 100px; height: 100px;" 
-            loop autoplay>
-          </lottie-player>
+        
+        <div class="bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl h-48 flex items-center justify-center mb-4">
+          <svg class="w-20 h-20 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+          </svg>
         </div>
+        
         <h4 class="text-xl font-semibold text-center text-gray-800 mb-2">Server Process Predictor</h4>
         <p class="text-sm text-gray-600 mb-3 text-center">
           Sistema ML para predicción de problemas en servidores. API REST con FastAPI y dashboard interactivo.
@@ -496,8 +716,8 @@
           <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Python</span>
         </div>
         <div class="flex gap-3 justify-center">
-          <a href="https://github.com/Juancanchala/server-process-predictor" target="_blank" class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-900 text-sm transition">Ver GitHub</a>
-          <a href="#contacto" class="bg-orange-600 text-white px-5 py-2 rounded-lg hover:bg-orange-700 text-sm transition">Más info</a>
+          <a href="https://github.com/Juancanchala/server-process-predictor" target="_blank" class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-900 text-sm transition transform hover:scale-105">Ver GitHub</a>
+          <a href="#contacto" class="bg-orange-600 text-white px-5 py-2 rounded-lg hover:bg-orange-700 text-sm transition transform hover:scale-105">Más info</a>
         </div>
       </div>
 
@@ -505,7 +725,7 @@
 
     <!-- CTA -->
     <div class="text-center mt-12">
-      <a href="#contacto" class="inline-block bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full transition shadow-lg">
+      <a href="#contacto" class="inline-block bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full transition shadow-lg transform hover:scale-105">
         Consultar solución de IA
       </a>
     </div>
@@ -516,14 +736,14 @@
 <section id="data-bi" class="py-16 bg-white">
   <div class="max-w-7xl mx-auto px-4">
     <div class="text-center mb-12">
-      <div class="flex justify-center mb-4">
-        <lottie-player 
-          src="https://lottie.host/cd20e3d1-f384-4bfd-80d8-f8df48b840a0/VPTxgU8GhN.json"
-          background="transparent" 
-          speed="1"
-          style="width: 150px; height: 150px;" 
-          loop autoplay>
-        </lottie-player>
+      <div class="flex justify-center mb-6">
+        <svg class="w-32 h-32 rotate-slow" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="45" fill="#9333EA" opacity="0.1"/>
+          <circle cx="50" cy="50" r="30" stroke="#9333EA" stroke-width="3" fill="none"/>
+          <circle cx="50" cy="50" r="20" stroke="#9333EA" stroke-width="3" fill="none"/>
+          <circle cx="50" cy="50" r="10" stroke="#9333EA" stroke-width="3" fill="none"/>
+          <path d="M50 20V30M50 70V80M20 50H30M70 50H80" stroke="#9333EA" stroke-width="3" stroke-linecap="round"/>
+        </svg>
       </div>
       <h3 class="text-4xl font-bold text-gray-800 mb-4">Data & Business Intelligence</h3>
       <p class="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -536,15 +756,13 @@
       <!-- PROYECTO 1: PIPELINE SALARY ANALYTICS -->
       <div class="project-card bg-white rounded-2xl shadow-lg border-2 border-purple-200 p-6 relative">
         <span class="badge badge-ready absolute top-4 right-4 z-10">✅ Disponible</span>
-        <div class="flex justify-center mb-4 lottie-icon">
-          <lottie-player 
-            src="https://lottie.host/2f1da634-a487-4d81-9609-613171729e39/1BcKQHROdU.json"
-            background="transparent" 
-            speed="1"
-            style="width: 100px; height: 100px;" 
-            loop autoplay>
-          </lottie-player>
+        
+        <div class="bg-gradient-to-br from-cyan-100 to-cyan-200 rounded-xl h-48 flex items-center justify-center mb-4">
+          <svg class="w-20 h-20 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
+          </svg>
         </div>
+        
         <h4 class="text-xl font-semibold text-center text-gray-800 mb-2">Pipeline Salary Analytics</h4>
         <p class="text-sm text-gray-600 mb-3 text-center">
           Pipeline automatizado con Apache Airflow procesando 147K+ registros. Orquestación completa con PySpark y BigQuery.
@@ -555,23 +773,21 @@
           <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">BigQuery</span>
         </div>
         <div class="flex gap-3 justify-center">
-          <a href="https://github.com/Juancanchala/pipeline-salary-analytics" target="_blank" class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-900 text-sm transition">Ver GitHub</a>
-          <a href="#contacto" class="bg-purple-600 text-white px-5 py-2 rounded-lg hover:bg-purple-700 text-sm transition">Más info</a>
+          <a href="https://github.com/Juancanchala/pipeline-salary-analytics" target="_blank" class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-900 text-sm transition transform hover:scale-105">Ver GitHub</a>
+          <a href="#contacto" class="bg-purple-600 text-white px-5 py-2 rounded-lg hover:bg-purple-700 text-sm transition transform hover:scale-105">Más info</a>
         </div>
       </div>
 
       <!-- PROYECTO 2: MICROSOFT FABRIC -->
       <div class="project-card bg-white rounded-2xl shadow-lg border-2 border-purple-200 p-6 relative">
         <span class="badge badge-updating absolute top-4 right-4 z-10">🔄 En actualización</span>
-        <div class="flex justify-center mb-4 lottie-icon">
-          <lottie-player 
-            src="https://lottie.host/eaf84d66-ad03-40e3-9e74-b32840d013a5/Rkk7Z4YqXV.json"
-            background="transparent" 
-            speed="1"
-            style="width: 100px; height: 100px;" 
-            loop autoplay>
-          </lottie-player>
+        
+        <div class="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl h-48 flex items-center justify-center mb-4">
+          <svg class="w-20 h-20 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+          </svg>
         </div>
+        
         <h4 class="text-xl font-semibold text-center text-gray-800 mb-2">Microsoft Fabric Real Estate</h4>
         <p class="text-sm text-gray-600 mb-3 text-center">
           Plataforma end-to-end de analytics para sector inmobiliario. Arquitectura enterprise moderna.
@@ -581,7 +797,7 @@
           <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Analytics</span>
         </div>
         <div class="flex gap-3 justify-center">
-          <a href="https://github.com/Juancanchala/Microsoft-fabric-real-estate-analytics" target="_blank" class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-900 text-sm transition">Ver GitHub</a>
+          <a href="https://github.com/Juancanchala/Microsoft-fabric-real-estate-analytics" target="_blank" class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-900 text-sm transition transform hover:scale-105">Ver GitHub</a>
           <a href="#contacto" class="bg-gray-400 text-white px-5 py-2 rounded-lg cursor-not-allowed text-sm">Próximamente</a>
         </div>
       </div>
@@ -589,15 +805,13 @@
       <!-- PROYECTO 3: CDC REAL-TIME -->
       <div class="project-card bg-white rounded-2xl shadow-lg border-2 border-purple-200 p-6 relative">
         <span class="badge badge-ready absolute top-4 right-4 z-10">✅ Disponible</span>
-        <div class="flex justify-center mb-4 lottie-icon">
-          <lottie-player 
-            src="https://lottie.host/eaf84d66-ad03-40e3-9e74-b32840d013a5/Rkk7Z4YqXV.json"
-            background="transparent" 
-            speed="1"
-            style="width: 100px; height: 100px;" 
-            loop autoplay>
-          </lottie-player>
+        
+        <div class="bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl h-48 flex items-center justify-center mb-4">
+          <svg class="w-20 h-20 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/>
+          </svg>
         </div>
+        
         <h4 class="text-xl font-semibold text-center text-gray-800 mb-2">CDC Real-time</h4>
         <p class="text-sm text-gray-600 mb-3 text-center">
           Change Data Capture en tiempo real con MySQL, Debezium y Kafka. Sincronización enterprise.
@@ -608,8 +822,8 @@
           <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">CDC</span>
         </div>
         <div class="flex gap-3 justify-center">
-          <a href="https://github.com/Juancanchala/cdc-mysql-debezium-kafka" target="_blank" class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-900 text-sm transition">Ver GitHub</a>
-          <a href="#contacto" class="bg-purple-600 text-white px-5 py-2 rounded-lg hover:bg-purple-700 text-sm transition">Más info</a>
+          <a href="https://github.com/Juancanchala/cdc-mysql-debezium-kafka" target="_blank" class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-900 text-sm transition transform hover:scale-105">Ver GitHub</a>
+          <a href="#contacto" class="bg-purple-600 text-white px-5 py-2 rounded-lg hover:bg-purple-700 text-sm transition transform hover:scale-105">Más info</a>
         </div>
       </div>
 
@@ -617,7 +831,7 @@
 
     <!-- CTA -->
     <div class="text-center mt-12">
-      <a href="#contacto" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full transition shadow-lg">
+      <a href="#contacto" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full transition shadow-lg transform hover:scale-105">
         Cotizar proyecto de Data & BI
       </a>
     </div>
@@ -640,49 +854,59 @@
         <span>📈</span> Dashboards Business Intelligence
       </h4>
       
-      <div class="overflow-x-auto">
-        <div class="flex gap-6 pb-6 snap-x snap-mandatory overflow-x-scroll">
+      <div class="grid md:grid-cols-3 gap-8">
 
-          <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 min-w-[300px] max-w-sm snap-center flex-shrink-0 hover:shadow-xl transition">
-            <img src="https://raw.githubusercontent.com/Juancanchala/juancanchala.github.io/main/imagenes/dashboard_inventario_textil_card.jpg" alt="Dashboard Inventario" class="rounded-xl mb-3 w-full h-48 object-cover zoomable">
-            <h5 class="text-lg font-semibold text-center text-gray-800">🧵 Dashboard Inventario Textil</h5>
-            <p class="text-sm mt-2 mb-3 text-center text-gray-600">Análisis de stock y demanda geográfica.</p>
-            <div class="flex justify-center gap-2 text-xs mb-3">
-              <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Streamlit</span>
-            </div>
-            <div class="flex gap-2 justify-center">
-              <a href="https://juancanchala-bd-inventario-texmoda-app-rquk2l.streamlit.app/" target="_blank" class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm">Ver demo</a>
-              <a href="https://github.com/Juancanchala/bd-inventario-texmoda" target="_blank" class="bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-900 text-sm">GitHub</a>
-            </div>
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 hover:shadow-xl transition">
+          <div class="bg-gradient-to-br from-green-100 to-green-200 rounded-xl h-48 flex items-center justify-center mb-4">
+            <svg class="w-20 h-20 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
           </div>
-
-          <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 min-w-[300px] max-w-sm snap-center flex-shrink-0 hover:shadow-xl transition">
-            <img src="imagenes/dashboard-ventas.avif" alt="Dashboard Ventas" class="rounded-xl mb-3 w-full h-48 object-cover zoomable">
-            <h5 class="text-lg font-semibold text-center text-gray-800">📊 Dashboard de Ventas</h5>
-            <p class="text-sm mt-2 mb-3 text-center text-gray-600">Análisis por canal y producto.</p>
-            <div class="flex justify-center gap-2 text-xs mb-3">
-              <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Power BI</span>
-            </div>
-            <div class="flex gap-2 justify-center">
-              <a href="#" class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm">Ver demo</a>
-              <a href="https://github.com/Juancanchala/dashboard-gestion-ventas-powerbi" target="_blank" class="bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-900 text-sm">GitHub</a>
-            </div>
+          <h5 class="text-lg font-semibold text-center text-gray-800">🧵 Dashboard Inventario Textil</h5>
+          <p class="text-sm mt-2 mb-3 text-center text-gray-600">Análisis de stock y demanda geográfica.</p>
+          <div class="flex justify-center gap-2 text-xs mb-3">
+            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Streamlit</span>
           </div>
-
-          <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 min-w-[300px] max-w-sm snap-center flex-shrink-0 hover:shadow-xl transition">
-            <img src="https://raw.githubusercontent.com/Juancanchala/juancanchala.github.io/main/imagenes/Template1.jpg" alt="Dashboard Utilidad" class="rounded-xl mb-3 w-full h-48 object-cover zoomable">
-            <h5 class="text-lg font-semibold text-center text-gray-800">📈 Dashboard de Utilidad</h5>
-            <p class="text-sm mt-2 mb-3 text-center text-gray-600">Análisis financiero y márgenes.</p>
-            <div class="flex justify-center gap-2 text-xs mb-3">
-              <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Power BI</span>
-            </div>
-            <div class="flex gap-2 justify-center">
-              <a href="#" class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm">Ver demo</a>
-              <a href="https://github.com/Juancanchala/dashboard-utilidad-margenes-powerbi" target="_blank" class="bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-900 text-sm">GitHub</a>
-            </div>
+          <div class="flex gap-2 justify-center">
+            <a href="https://juancanchala-bd-inventario-texmoda-app-rquk2l.streamlit.app/" target="_blank" class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm transform hover:scale-105 transition">Ver demo</a>
+            <a href="https://github.com/Juancanchala/bd-inventario-texmoda" target="_blank" class="bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-900 text-sm transform hover:scale-105 transition">GitHub</a>
           </div>
-
         </div>
+
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 hover:shadow-xl transition">
+          <div class="bg-gradient-to-br from-cyan-100 to-cyan-200 rounded-xl h-48 flex items-center justify-center mb-4">
+            <svg class="w-20 h-20 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <h5 class="text-lg font-semibold text-center text-gray-800">📊 Dashboard de Ventas</h5>
+          <p class="text-sm mt-2 mb-3 text-center text-gray-600">Análisis por canal y producto.</p>
+          <div class="flex justify-center gap-2 text-xs mb-3">
+            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Power BI</span>
+          </div>
+          <div class="flex gap-2 justify-center">
+            <a href="#" class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm transform hover:scale-105 transition">Ver demo</a>
+            <a href="https://github.com/Juancanchala/dashboard-gestion-ventas-powerbi" target="_blank" class="bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-900 text-sm transform hover:scale-105 transition">GitHub</a>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 hover:shadow-xl transition">
+          <div class="bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl h-48 flex items-center justify-center mb-4">
+            <svg class="w-20 h-20 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h5 class="text-lg font-semibold text-center text-gray-800">📈 Dashboard de Utilidad</h5>
+          <p class="text-sm mt-2 mb-3 text-center text-gray-600">Análisis financiero y márgenes.</p>
+          <div class="flex justify-center gap-2 text-xs mb-3">
+            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Power BI</span>
+          </div>
+          <div class="flex gap-2 justify-center">
+            <a href="#" class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm transform hover:scale-105 transition">Ver demo</a>
+            <a href="https://github.com/Juancanchala/dashboard-utilidad-margenes-powerbi" target="_blank" class="bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-900 text-sm transform hover:scale-105 transition">GitHub</a>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -692,38 +916,44 @@
         <span>🌐</span> Plantillas Web Profesionales
       </h4>
       
-      <div class="overflow-x-auto">
-        <div class="flex gap-6 pb-6 snap-x snap-mandatory overflow-x-scroll">
+      <div class="grid md:grid-cols-2 gap-8">
 
-          <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 min-w-[300px] md:min-w-[350px] snap-center flex-shrink-0 hover:shadow-xl transition">
-            <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80" alt="Template Empresarial" class="rounded-xl mb-3 w-full h-48 object-cover zoomable">
-            <h5 class="text-lg font-semibold text-center text-gray-800">💼 Template Empresarial Premium</h5>
-            <p class="text-sm mt-2 mb-3 text-center text-gray-600">Landing profesional con IA integrada.</p>
-            <div class="flex justify-center gap-2 text-xs mb-3">
-              <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">HTML</span>
-              <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Tailwind</span>
-            </div>
-            <div class="flex gap-2 justify-center">
-              <a href="https://juancanchala.github.io/plantilla-dlogia-02/" target="_blank" class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm">Ver demo</a>
-              <a href="https://github.com/Juancanchala/plantilla-dlogia-02" target="_blank" class="bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-900 text-sm">GitHub</a>
-            </div>
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 hover:shadow-xl transition">
+          <div class="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl h-48 flex items-center justify-center mb-4">
+            <svg class="w-20 h-20 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
           </div>
-
-          <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 min-w-[300px] md:min-w-[350px] snap-center flex-shrink-0 hover:shadow-xl transition">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Template Freelancer" class="rounded-xl mb-3 w-full h-48 object-cover zoomable">
-            <h5 class="text-lg font-semibold text-center text-gray-800">🎨 Template Freelancer</h5>
-            <p class="text-sm mt-2 mb-3 text-center text-gray-600">Portafolio moderno para creativos.</p>
-            <div class="flex justify-center gap-2 text-xs mb-3">
-              <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">HTML</span>
-              <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Tailwind</span>
-            </div>
-            <div class="flex gap-2 justify-center">
-              <a href="https://juancanchala.github.io/template_freelancer/" target="_blank" class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm">Ver demo</a>
-              <a href="https://github.com/Juancanchala/template_freelancer" target="_blank" class="bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-900 text-sm">GitHub</a>
-            </div>
+          <h5 class="text-lg font-semibold text-center text-gray-800">💼 Template Empresarial Premium</h5>
+          <p class="text-sm mt-2 mb-3 text-center text-gray-600">Landing profesional con IA integrada.</p>
+          <div class="flex justify-center gap-2 text-xs mb-3">
+            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">HTML</span>
+            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Tailwind</span>
           </div>
-
+          <div class="flex gap-2 justify-center">
+            <a href="https://juancanchala.github.io/plantilla-dlogia-02/" target="_blank" class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm transform hover:scale-105 transition">Ver demo</a>
+            <a href="https://github.com/Juancanchala/plantilla-dlogia-02" target="_blank" class="bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-900 text-sm transform hover:scale-105 transition">GitHub</a>
+          </div>
         </div>
+
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 hover:shadow-xl transition">
+          <div class="bg-gradient-to-br from-pink-100 to-pink-200 rounded-xl h-48 flex items-center justify-center mb-4">
+            <svg class="w-20 h-20 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+            </svg>
+          </div>
+          <h5 class="text-lg font-semibold text-center text-gray-800">🎨 Template Freelancer</h5>
+          <p class="text-sm mt-2 mb-3 text-center text-gray-600">Portafolio moderno para creativos.</p>
+          <div class="flex justify-center gap-2 text-xs mb-3">
+            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">HTML</span>
+            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded">Tailwind</span>
+          </div>
+          <div class="flex gap-2 justify-center">
+            <a href="https://juancanchala.github.io/template_freelancer/" target="_blank" class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm transform hover:scale-105 transition">Ver demo</a>
+            <a href="https://github.com/Juancanchala/template_freelancer" target="_blank" class="bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-900 text-sm transform hover:scale-105 transition">GitHub</a>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -735,11 +965,13 @@
   <div class="max-w-6xl mx-auto px-4">
     <h3 class="text-3xl font-bold text-center text-gray-800 mb-10">⭐ Opiniones De Nuestros Clientes</h3>
 
-    <div class="flex gap-6 overflow-x-auto pb-4">
+    <div class="grid md:grid-cols-3 gap-6">
 
-      <div class="min-w-[300px] bg-white rounded-2xl shadow-md p-6 flex-shrink-0 hover:shadow-lg transition border border-gray-100">
+      <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition border border-gray-100">
         <div class="flex items-center gap-4 mb-3">
-          <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-12 h-12 rounded-full" alt="Juan P.">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-xl">
+            JP
+          </div>
           <div>
             <p class="font-semibold text-gray-800">Juan P.</p>
             <p class="text-sm text-gray-500">Gerente de Operaciones</p>
@@ -752,9 +984,11 @@
         <p class="text-sm text-gray-700">"Automatizamos procesos clave en solo días. ¡Recomendado 100%!"</p>
       </div>
 
-      <div class="min-w-[300px] bg-white rounded-2xl shadow-md p-6 flex-shrink-0 hover:shadow-lg transition border border-gray-100">
+      <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition border border-gray-100">
         <div class="flex items-center gap-4 mb-3">
-          <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-12 h-12 rounded-full" alt="Laura T.">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white font-bold text-xl">
+            LT
+          </div>
           <div>
             <p class="font-semibold text-gray-800">Laura T.</p>
             <p class="text-sm text-gray-500">Emprendedora</p>
@@ -767,9 +1001,11 @@
         <p class="text-sm text-gray-700">"Muy buena atención, respuesta rápida y resultados visuales top."</p>
       </div>
 
-      <div class="min-w-[300px] bg-white rounded-2xl shadow-md p-6 flex-shrink-0 hover:shadow-lg transition border border-gray-100">
+      <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition border border-gray-100">
         <div class="flex items-center gap-4 mb-3">
-          <img src="https://randomuser.me/api/portraits/men/15.jpg" class="w-12 h-12 rounded-full" alt="Carlos M.">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white font-bold text-xl">
+            CM
+          </div>
           <div>
             <p class="font-semibold text-gray-800">Carlos M.</p>
             <p class="text-sm text-gray-500">Analista de Datos</p>
@@ -791,7 +1027,7 @@
   <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
 
     <div>
-      <h3 class="text-3xl font-bold mb-6">
+      <h3 class="text-3xl font-bold mb-6 text-gray-800">
         ¿Listo para <span class="text-yellow-500">transformar</span> tu negocio?
       </h3>
       <p class="mb-8 text-gray-600">
@@ -799,24 +1035,31 @@
       </p>
       <ul class="space-y-6 text-sm">
         <li class="flex items-center gap-4">
-          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4de.svg" alt="Teléfono" class="w-6 h-6">
+          <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+          </svg>
           <div>
-            <span class="block font-semibold">Llámanos</span>
-            <span class="text-gray-500">+57 312 494 2672</span>
+            <span class="block font-semibold text-gray-800">Llámanos</span>
+            <span class="text-gray-600">+57 312 494 2672</span>
           </div>
         </li>
         <li class="flex items-center gap-4">
-          <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" class="w-6 h-6">
+          <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
           <div>
-            <span class="block font-semibold">WhatsApp</span>
-            <span class="text-gray-500">Disponible 24/7</span>
+            <span class="block font-semibold text-gray-800">WhatsApp</span>
+            <span class="text-gray-600">Disponible 24/7</span>
           </div>
         </li>
         <li class="flex items-center gap-4">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Correo" class="w-6 h-6">
+          <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+          </svg>
           <div>
-            <span class="block font-semibold">Email</span>
-            <span class="text-gray-500">contacto.dlogia@gmail.com</span>
+            <span class="block font-semibold text-gray-800">Email</span>
+            <span class="text-gray-600">contacto.dlogia@gmail.com</span>
           </div>
         </li>
       </ul>
@@ -825,12 +1068,12 @@
     <div class="bg-gray-50 rounded-2xl shadow-lg p-6 md:p-10 border border-gray-200">
       <form class="space-y-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input type="text" placeholder="Nombre completo" class="p-3 rounded-lg border w-full" required>
-          <input type="email" placeholder="Email" class="p-3 rounded-lg border w-full" required>
+          <input type="text" placeholder="Nombre completo" class="p-3 rounded-lg border w-full focus:ring-2 focus:ring-blue-500 outline-none transition" required>
+          <input type="email" placeholder="Email" class="p-3 rounded-lg border w-full focus:ring-2 focus:ring-blue-500 outline-none transition" required>
         </div>
-        <input type="text" placeholder="Empresa (opcional)" class="p-3 rounded-lg border w-full">
-        <textarea placeholder="Cuéntanos sobre tu proyecto..." rows="4" class="p-3 rounded-lg border w-full" required></textarea>
-        <button type="submit" class="bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg w-full hover:bg-blue-700 transition">
+        <input type="text" placeholder="Empresa (opcional)" class="p-3 rounded-lg border w-full focus:ring-2 focus:ring-blue-500 outline-none transition">
+        <textarea placeholder="Cuéntanos sobre tu proyecto..." rows="4" class="p-3 rounded-lg border w-full focus:ring-2 focus:ring-blue-500 outline-none transition" required></textarea>
+        <button type="submit" class="bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg w-full hover:bg-blue-700 transition transform hover:scale-105">
           🚀 Solicitar Consulta Gratuita
         </button>
       </form>
@@ -844,7 +1087,9 @@
 
     <div>
       <div class="flex items-center gap-2 mb-2">
-        <img src="imagenes/logo-dlogia.png" class="w-8" alt="Logo D'LOGIA">
+        <svg class="w-8 h-8 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+        </svg>
         <span class="text-white font-bold text-lg">D'LOGIA</span>
       </div>
       <p class="text-gray-400">Transformamos datos en decisiones estratégicas mediante BI, Data Engineering e Inteligencia Artificial.</p>
@@ -872,9 +1117,15 @@
     <div>
       <h4 class="text-white font-semibold mb-3">Síguenos</h4>
       <div class="flex space-x-4">
-        <a href="https://www.linkedin.com/in/ingjuancanchala" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" class="w-6 hover:opacity-80 transition" alt="LinkedIn"></a>
-        <a href="https://github.com/Juancanchala" target="_blank"><img src="imagenes/icono-github.png" class="w-6 hover:opacity-80 transition" alt="GitHub"></a>
-        <a href="https://wa.me/573124942672" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-6 hover:opacity-80 transition" alt="WhatsApp"></a>
+        <a href="https://www.linkedin.com/in/ingjuancanchala" target="_blank" class="hover:scale-110 transition transform">
+          <svg class="w-6" fill="#0077B5" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://github.com/Juancanchala" target="_blank" class="hover:scale-110 transition transform">
+          <svg class="w-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://wa.me/573124942672" target="_blank" class="hover:scale-110 transition transform">
+          <svg class="w-6" fill="#25D366" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        </a>
       </div>
       <div class="mt-4">
         <p class="text-xs text-gray-500">Medellín, Colombia</p>
@@ -888,7 +1139,7 @@
   </div>
 </footer>
 
-<!-- SCRIPT DE PARTÍCULAS - GRIS OSCURO ELEGANTE -->
+<!-- SCRIPT DE PARTÍCULAS -->
 <script>
   particlesJS("particles-js", {
     particles: {
@@ -927,6 +1178,36 @@
       }
     },
     retina_detect: true
+  });
+</script>
+
+<!-- SCRIPT DE TEMA OSCURO -->
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const themeIcon = document.getElementById('theme-icon');
+    const currentTheme = html.getAttribute('data-theme');
+    
+    if (currentTheme === 'dark') {
+      html.removeAttribute('data-theme');
+      themeIcon.textContent = '🌙';
+      localStorage.setItem('theme', 'light');
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      themeIcon.textContent = '☀️';
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+  
+  // Cargar tema guardado
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    const themeIcon = document.getElementById('theme-icon');
+    
+    if (savedTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeIcon.textContent = '☀️';
+    }
   });
 </script>
 
